@@ -10,5 +10,8 @@ module.exports = db.define('order', {
     },
     sessionId: {
         type: Sequelize.STRING
+    },
+    address: {
+    		type: Sequelize.STRING
     }
 });

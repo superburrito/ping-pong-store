@@ -12,6 +12,9 @@ module.exports = db.define('user', {
     password: {
         type: Sequelize.STRING
     },
+    address: {
+        type: Sequelize.STRING
+    },
     salt: {
         type: Sequelize.STRING
     },
@@ -23,6 +26,9 @@ module.exports = db.define('user', {
     },
     google_id: {
         type: Sequelize.STRING
+    },
+    isAdmin: {
+        type: Sequelize.BOOLEAN
     }
 }, {
     instanceMethods: {
