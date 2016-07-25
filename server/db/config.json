@@ -1,8 +1,0 @@
-{
-    "username" : "kingpong",
-    "password" : "pong4lyfe",
-    "database" : "pingpong",
-    "host"     : "127.0.0.1",
-    "dialect"  : "postgres",
-    "logging"  : "false"
-}

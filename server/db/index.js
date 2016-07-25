@@ -9,10 +9,10 @@ var Review = require('./models/review');
 
 //Relationships
 User.hasMany(Order);
-Order.hasOne(User);
+Order.belongsTo(User);
 Order.hasMany(Product);
 Product.hasMany(Review);
-Review.hasOne(Product);
+Review.belongsTo(Product);
 User.hasMany(Review);
-Review.hasOne(User);
+Review.belongsTo(User);
 
