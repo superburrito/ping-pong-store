@@ -1,5 +1,5 @@
-'use strict';
-var models = require("../../../db/index");
+/*'use strict';
+var models = require("../../../db/models");
 var Product = models.Product;
 var User = models.User;
 var Review = models.Review;
@@ -86,3 +86,4 @@ router.get('/:userId/reviews', function(req,res,next){
 
 module.exports = router;
 
+*/

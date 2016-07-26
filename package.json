@@ -5,6 +5,7 @@
   "main": "server/start.js",
   "scripts": {
     "start": "nodemon --watch server -e js,html server/start.js",
+    "testback" : "node tests/server/models/user-test.js",
     "postinstall": "gulp build"
   },
   "engines": {

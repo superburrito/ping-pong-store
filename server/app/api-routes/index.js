@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 var router = require('express').Router();
 module.exports = router;
 
@@ -12,3 +12,4 @@ router.use('/cart', require('./user.model.js'));
 router.use(function (req, res) {
   res.status(404).end();
 });
+*/

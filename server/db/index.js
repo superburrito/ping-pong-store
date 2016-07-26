@@ -1,24 +1,5 @@
 'use strict';
-var db = require('./_db');
 
-var User = require('./user.model.js');
-var Product = require('./product.model.js');
-var Order = require('./order.model.js');
-var Review = require('./review.model.js');
+var db = require('./_db.js');
 
-//Relationships
-User.hasMany(Order);
-Order.belongsToMasny(Product, { through: 'orderproductpivot' });
-Product.belongsToMany(Order, { through: 'orderproductpivot' });
-Product.hasMany(Review);
-User.hasMany(Review);
-
-
-module.exports = {
-	User: User,
-	Product: Product,
-	Order: Order,
-	Review: Review
-};
-
-
+module.exports = db;

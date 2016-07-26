@@ -29,7 +29,7 @@ module.exports = db.define('product', {
     },
     inventory: {
         type: Sequelize.INTEGER
-    },
+    }, 
     description: {
         type: Sequelize.TEXT
     },

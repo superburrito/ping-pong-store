@@ -5,7 +5,7 @@ var Sequelize = require('sequelize');
 
 var db = require('../../../server/db');
 
-var User = db.User;
+var User = db.model('user');
 
 describe('User model', function () {
 
