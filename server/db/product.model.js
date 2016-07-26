@@ -13,11 +13,19 @@ module.exports = db.define('product', {
     },
     category: {
         type: Sequelize.STRING
-        //effectively will validate in the front end via drop-down menu
+    },
+    // Applies to shoes only
+    size: {
+        type: Sequelize.INTEGER,
+        defaultValue: null
+    },
+    // Applies to ping-pong ball
+    quality: {
+        type: Sequelize.INTEGER,
+        defaultValue: null
     },
     brand: {
         type: Sequelize.STRING
-        //drop-down
     },
     inventory: {
         type: Sequelize.INTEGER
@@ -31,7 +39,6 @@ module.exports = db.define('product', {
 }, {
     getterMethods: {
         rating: function () {
-            //define this later
         }
     }//,
 //     instanceMethods: {
