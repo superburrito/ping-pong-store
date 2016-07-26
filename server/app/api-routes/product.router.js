@@ -1,5 +1,5 @@
-/*'use strict';
-var models = require("../../../db/models");
+'use strict';
+var models = require("../../db/models");
 var Product = models.Product;
 var User = models.User;
 var Review = models.Review;
@@ -46,4 +46,3 @@ router.get('/:productId', function(req,res,next){
 
 module.exports = router;
 
-*/

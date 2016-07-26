@@ -1,5 +1,5 @@
-/*'use strict';
-var models = require("../../../db/models");
+'use strict';
+var models = require("../../db/models");
 var Product = models.Product;
 var Order = models.Order;
 var router = require('express').Router();
@@ -18,4 +18,3 @@ router.get('/', function(req,res,next){
 
 module.exports = router;
 
-*/
