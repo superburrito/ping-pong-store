@@ -11,12 +11,11 @@ describe('User model', function () {
 
     var newUser;
     beforeEach('Sync DB', function () {
-        var salt = User.generateSalt();
         return User.create({
+            name: "John Henry",
             email: "johnhenry@gmail.com",
             password: "123guessme",
             address: "5th Hanover Square",
-            salt: salt,
             isAdmin: true
         }).then(function(user){
             newUser = user;
@@ -127,7 +126,13 @@ describe('User model', function () {
             var saltSpy;
 
             var createUser = function () {
-                return User.create({ email: 'obama@gmail.com', password: 'potus' });
+                return User.create({
+                    name: "John Henry",
+                    email: "johnhenry@gmail.com",
+                    password: "123guessme",
+                    address: "5th Hanover Square",
+                    isAdmin: true
+                })
             };
 
             beforeEach(function () {
@@ -143,7 +148,7 @@ describe('User model', function () {
             it('should call User.encryptPassword with the given password and generated salt', function (done) {
                 createUser().then(function () {
                     var generatedSalt = saltSpy.getCall(0).returnValue;
-                    expect(encryptSpy.calledWith('potus', generatedSalt)).to.be.ok;
+                    expect(encryptSpy.calledWith('123guessme', generatedSalt)).to.be.ok;
                     done();
                 });
             });
@@ -169,7 +174,13 @@ describe('User model', function () {
         describe('sanitize method', function () {
 
             var createUser = function () {
-                return User.create({ email: 'obama@gmail.com', password: 'potus' });
+                return User.create({
+                    name: "John Henry",
+                    email: "johnhenry@gmail.com",
+                    password: "123guessme",
+                    address: "5th Hanover Square",
+                    isAdmin: true
+                })
             };
 
             it('should remove sensitive information from a user object', function () {

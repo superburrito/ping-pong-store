@@ -14,9 +14,6 @@ module.exports = db.define('product', {
     },
     name: {
         type: Sequelize.STRING,
-        validate: {
-            isAlpha: true
-        },
         allowNull: false
 
     },

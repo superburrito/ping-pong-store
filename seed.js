@@ -24,12 +24,16 @@ var User = models.User;
 var Promise = require('sequelize').Promise;
 
 var seedUsers = function () {
-
+    var salt = User.generateSalt();
     var users = [
-        {   
-            email: 'testing@fsa.com',
-            password: 'password'
-        },
+        {
+            name: "John Henry",
+            email: "johnhenry@gmail.com",
+            password: "123guessme",
+            address: "5th Hanover Square",
+            salt: salt,
+            isAdmin: true
+        }
     ];
 
     var creatingUsers = users.map(function (userObj) {
