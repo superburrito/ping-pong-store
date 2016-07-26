@@ -45,7 +45,7 @@ module.exports = db.define('product', {
         type: Sequelize.TEXT
     },
     imageUrl: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         validate: {
             isUrl: true
         },
