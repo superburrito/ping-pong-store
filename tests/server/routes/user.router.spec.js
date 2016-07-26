@@ -24,13 +24,21 @@ describe('Members Route', function () {
 
 		var guestAgent;
 
-		beforeEach('Create guest agent', function () {
-			guestAgent = supertest.agent(app);
+		beforeEach('Create guest agent', function (done) {
+			User.create({name:'paul', email: 'testing@fsa.com',
+			password: 'paul', address: '75 Wall St'
+			})
+			.then(function(newUser){
+				console.log(newUser)
+				guestAgent = supertest.agent(app);
+				guestAgent.post('/login', {email: 'testing@fsa.com',
+			password: 'paul'}).end(done);
+			})
 		});
 
-		it('should get a 401 response', function (done) {
-			guestAgent.get('/api/members/secret-stash')
-				.expect(401)
+		it('should get a 403 response', function (done) {
+			guestAgent.get('/api/users/')
+				.expect(403)
 				.end(done);
 		});
 

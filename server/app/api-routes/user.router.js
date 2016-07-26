@@ -7,7 +7,8 @@ var Order = models.Order;
 var router = require('express').Router();
 
 router.get('/', function(req,res,next){ 
-	var userId = req.session.user.id;
+	var userId = req.session.user;
+	console.log('hi', req.session.user);
 	return User.findOne({
 		where: {
 			id: userId
