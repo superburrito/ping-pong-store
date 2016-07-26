@@ -6,10 +6,12 @@ var db = require('../_db');
 
 module.exports = db.define('review', {
     title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     score: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
         // 1-5 validated in front end
     },
     feedback: {

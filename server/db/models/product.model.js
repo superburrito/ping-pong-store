@@ -6,13 +6,26 @@ var db = require('../_db');
 
 module.exports = db.define('product', {
     price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        validate: {
+            isNumeric: true
+        },
+        allowNull: false
     },
     name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: {
+            isAlpha: true
+        },
+        allowNull: false
+
     },
     category: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: {
+            isIn: [['paddles','balls','cases',
+                    'shoes','tables','robots', '']]
+        }
     },
     // Applies to shoes only
     size: {
@@ -28,44 +41,22 @@ module.exports = db.define('product', {
         type: Sequelize.STRING
     },
     inventory: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
     }, 
     description: {
         type: Sequelize.TEXT
     },
     imageUrl: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: {
+            isUrl: true
+        },
+        defaultValue: "http://www.daaddelhi.org/imperia/md/content/newdelhi/b_no_image_icon.gif"
     }
 }, {
     getterMethods: {
         rating: function () {
         }
-    }//,
-//     instanceMethods: {
-//         sanitize: function () {
-//             return _.omit(this.toJSON(), ['password', 'salt']);
-//         },
-//         correctPassword: function (candidatePassword) {
-//             return this.Model.encryptPassword(candidatePassword, this.salt) === this.password;
-//         }
-//     },
-//     classMethods: {
-//         sortBy: function (param) {
-//             return crypto.randomBytes(16).toString('base64');
-//         },
-//         encryptPassword: function (plainText, salt) {
-//             var hash = crypto.createHash('sha1');
-//             hash.update(plainText);
-//             hash.update(salt);
-//             return hash.digest('hex');
-//         }
-//     },
-//     hooks: {
-//         beforeValidate: function (user) {
-//             if (user.changed('password')) {
-//                 user.salt = user.Model.generateSalt();
-//                 user.password = user.Model.encryptPassword(user.password, user.salt);
-//             }
-//         }
-//     }
+    }
 });

@@ -6,12 +6,17 @@ var db = require('../_db');
 
 module.exports = db.define('order', {
     status: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        validate: {
+        	isNumeric: true
+        },
+        allowNull: false
     },
     sessionId: {
         type: Sequelize.STRING
     },
     address: {
-    		type: Sequelize.STRING
+    		type: Sequelize.STRING,
+    		allowNull: false
     }
 });

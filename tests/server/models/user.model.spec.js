@@ -9,9 +9,45 @@ var User = db.model('user');
 
 describe('User model', function () {
 
+    var newUser;
     beforeEach('Sync DB', function () {
-       return db.sync({ force: true });
+        var salt = User.generateSalt();
+        return User.create({
+            email: "johnhenry@gmail.com",
+            password: "123guessme",
+            address: "5th Hanover Square",
+            salt: salt,
+            isAdmin: true
+        }).then(function(user){
+            newUser = user;
+        }).then(function(){
+            return db.sync({ force: true });
+        });
+    })
+
+    describe('Newly created user', function () {
+        describe('email attribute', function () {
+            it('should exist', function () {
+                expect(newUser.email).to.exist;
+            })
+        });
+        describe('password attribute', function () {
+            it('should exist', function () {
+                expect(newUser.password).to.exist;
+            })
+        });
+        describe('address attribute', function () {
+            it('should exist', function () {
+                expect(newUser.address).to.exist;
+            })
+        });
+        describe('isAdmin attribute', function () {
+            it('should be true', function () {
+                expect(newUser.isAdmin).to.equal(true);
+            })
+        });
     });
+
 
     describe('password encryption', function () {
 
