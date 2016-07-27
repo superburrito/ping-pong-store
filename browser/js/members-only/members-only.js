@@ -1,7 +1,7 @@
 app.config(function ($stateProvider) {
 
     $stateProvider.state('membersOnly', {
-        url: '/members-area',
+        url: '/account',
         template: 'js/members-only/members-only.html',
         controller: function ($scope, Account) {
             Account.getAccountInfo().then(function (userAccount) {
@@ -20,7 +20,7 @@ app.config(function ($stateProvider) {
 app.factory('Account', function ($http) {
 
     var getAccountInfo = function () {
-        return $http.get('/api/users').then(function (Account) {
+        return $http.get('/api/account').then(function (Account) {
             return Account.data;
         });
     };
