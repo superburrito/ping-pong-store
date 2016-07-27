@@ -2,7 +2,7 @@ app.config(function ($stateProvider) {
 
     $stateProvider.state('membersOnly', {
         url: '/account',
-        template: 'js/members-only/members-only.html',
+        templateUrl: 'js/members-only/members-only.html',
         controller: function ($scope, Account) {
             Account.getAccountInfo().then(function (userAccount) {
                 $scope.account = userAccount;
