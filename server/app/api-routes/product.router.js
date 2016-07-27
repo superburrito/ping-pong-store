@@ -5,12 +5,13 @@ var User = models.User;
 var Review = models.Review;
 var router = require('express').Router();
 
+
 router.get('/', function(req,res,next){
 	return Product.findAll({
 		where: req.query
 	})
 	.then(function(products){
-		return res.json(products);
+		return res.send(products);
 	})
 	.catch(next);
 });
@@ -24,20 +25,6 @@ router.post('/', function(req, res, next) {
     })
     .cath(next)
 });
-
-
-router.get('/:productId/reviews', function(req,res,next){
-	return Review.findAll({
-		where: {
-			productId: req.params.productId
-		}
-	})
-	.then(function(productReviews){
-		return res.json(productReviews);
-	})
-	.catch(next);
-});
-
 
 router.get('/:productId', function(req,res,next){
 	return Product.findOne({

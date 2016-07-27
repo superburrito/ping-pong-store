@@ -12,7 +12,8 @@ describe('User model', function () {
     var newUser;
     beforeEach('Sync DB', function () {
         return User.create({
-            name: "John Henry",
+            firstName: "John",
+            lastName: "Henry",
             email: "johnhenry@gmail.com",
             password: "123guessme",
             address: "5th Hanover Square",
@@ -127,7 +128,8 @@ describe('User model', function () {
 
             var createUser = function () {
                 return User.create({
-                    name: "John Henry",
+                    firstName: "John",
+                    lastName: "Henry",
                     email: "johnhenry@gmail.com",
                     password: "123guessme",
                     address: "5th Hanover Square",
@@ -175,7 +177,8 @@ describe('User model', function () {
 
             var createUser = function () {
                 return User.create({
-                    name: "John Henry",
+                    firstName: "John",
+                    lastName: "Henry",
                     email: "johnhenry@gmail.com",
                     password: "123guessme",
                     address: "5th Hanover Square",
