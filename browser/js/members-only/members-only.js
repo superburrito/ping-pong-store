@@ -2,10 +2,10 @@ app.config(function ($stateProvider) {
 
     $stateProvider.state('membersOnly', {
         url: '/members-area',
-        template: '<img ng-repeat="item in stash" width="300" ng-src="{{ item }}" />',
-        controller: function ($scope, SecretStash) {
-            SecretStash.getStash().then(function (stash) {
-                $scope.stash = stash;
+        template: 'js/members-only/members-only.html',
+        controller: function ($scope, Account) {
+            Account.getAccountInfo().then(function (userAccount) {
+                $scope.account = userAccount;
             });
         },
         // The following data.authenticate is read by an event listener
@@ -17,16 +17,16 @@ app.config(function ($stateProvider) {
 
 });
 
-app.factory('SecretStash', function ($http) {
+app.factory('Account', function ($http) {
 
-    var getStash = function () {
-        return $http.get('/api/members/secret-stash').then(function (response) {
-            return response.data;
+    var getAccountInfo = function () {
+        return $http.get('/api/users').then(function (Account) {
+            return Account.data;
         });
     };
 
     return {
-        getStash: getStash
+        getAccountInfo: getAccountInfo
     };
 
 });
