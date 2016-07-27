@@ -7,8 +7,8 @@ var Order = models.Order;
 var router = require('express').Router();
 
 router.get('/', function(req,res,next){ 
-	var userId = req.session.user;
-	console.log('hi', req.session.user);
+	var userId = req.user.id;
+	console.log('User logged in is: ', req.user);
 	return User.findOne({
 		where: {
 			id: userId
@@ -28,7 +28,7 @@ router.get('/', function(req,res,next){
 
 
 router.get('/:userId', function(req,res,next){
-	var userId = req.params.userId;
+	var intendedUser = req.params.userId;
 	User.findOne({
 		where: {
 			id: userId

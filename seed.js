@@ -9,16 +9,16 @@ var Promise = require('sequelize').Promise;
 
 var seedUsers = function () {
     var users = [
-        {name:'paul',email: 'testing@fsa.com', password: 'paul', address: '75 Wall St'},
-        {name:'yao',email: '123@fsa.com', password: 'yao', address: '52 Mulberry St'},
-        {name:'john',email: 'erhigu@fsa.com', password: 'john', address: '9 S William St'},
-        {name:'will',email: 'qwe@fsa.com', password: 'will', address: '85 West Broadway'},
-        {name:'joe',email: 'erf@fsa.com', password: 'joe', address: '8 Stone St'},
-        {name:'tammy',email: 'sdv@fsa.com', password: 'tammy', address: '91 E Broadway'},
-        {name:'julia',email: 'oer@fsa.com', password: 'julia', address: '102 N End Ave'},
-        {name:'yurik',email: 'sdvowej@fsa.com', password: 'yurik', address: '55 Church St'},
-        {name:'jay',email: 'jioreg@fsa.com', password: 'jay', address: '106 Bowery'},
-        {name:'samuel',email: 'vdel@fsa.com', password: 'samuel', address: '15 Gold Street'}
+        {firstName:'paul', lastName: 'hsu', email: 'testing@fsa.com', password: 'paul', address: '75 Wall St'},
+        {firstName:'yao', lastName: 'chua', email: '123@fsa.com', password: 'yao', address: '52 Mulberry St'},
+        {firstName:'john', lastName: 'henry', email: 'erhigu@fsa.com', password: 'john', address: '9 S William St'},
+        {firstName:'will', lastName: 'laeri', email: 'qwe@fsa.com', password: 'will', address: '85 West Broadway'},
+        {firstName:'joe', lastName: 'wat', email: 'erf@fsa.com', password: 'joe', address: '8 Stone St'},
+        {firstName:'tammy', lastName: 'chu', email: 'sdv@fsa.com', password: 'tammy', address: '91 E Broadway'},
+        {firstName:'julia', lastName: 'julia', email: 'oer@fsa.com', password: 'julia', address: '102 N End Ave'},
+        {firstName:'yurik', lastName: 'yolo', email: 'sdvowej@fsa.com', password: 'yurik', address: '55 Church St'},
+        {firstName:'jay', lastName: 'johnson', email: 'jioreg@fsa.com', password: 'jay', address: '106 Bowery'},
+        {firstName:'samuel', lastName: 'serverance', email: 'vdel@fsa.com', password: 'samuel', address: '15 Gold Street'}
     ];
     var creatingUsers = users.map(function (userObj) {
         return User.create(userObj);
