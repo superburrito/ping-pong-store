@@ -73,7 +73,7 @@ router.get('/:userId/orders', function(req, res, next){
     if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
 	return Order.findAll({
 		where: {
-			userId: req.user.id
+			userId: req.params.userId
 		}
 	})
 	.then(function(orders){
@@ -85,7 +85,7 @@ router.get('/:userId/orders', function(req, res, next){
 router.get('/:userId/reviews', function(req, res, next){
 	return Review.findAll({
 		where: {
-			userId: req.user.id
+			userId: req.params.userId
 		}
 	})
 	.then(function(reviews){
@@ -95,8 +95,17 @@ router.get('/:userId/reviews', function(req, res, next){
 });
 
 router.get('/:userId/cart', function(req, res, next){
-    if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
-    //res.redirect
+    if(!req.user.isAdmin || req.user. id !== req.params.userId) res.sendStatus(403);
+    return Order.findOne({
+        where: {
+            userId: req.params.userId,
+            status: 0
+        }
+    })
+    .then(function(cart){
+        return res.json(cart);
+    })
+    .catch(next)
 });
 
 module.exports = router;

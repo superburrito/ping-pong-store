@@ -4,7 +4,33 @@ var Product = models.Product;
 var User = models.User;
 var Review = models.Review;
 var router = require('express').Router();
+var http = require('http');
 
+// router.use('/', function(req, res, next){
+//     if(!req.user){
+//         User.create({
+//             firstName: 'Guest',
+//             lastName: 'Guester',
+//             email: 'guest@kingpong.com',
+//             password: 'guestp@ss',
+//             address: '5 Hanover Square, NY, NY 10004'
+//         })
+//         .then(function(createdUser){
+//             console.log('createdUser!!!!!!!!!!!!!!!!!', createdUser);
+//             var req = http.request({
+//                 method: 'POST',
+//                 path: '/login'
+//             })
+//             req.write({
+//                 email: createdUser.email,
+//                 password: createdUser.password
+//             })
+//             req.end()
+//             next();
+//         })
+//         .catch(next)
+//     }
+// });
 
 router.get('/', function(req, res, next){
     return Product.findAll({
@@ -69,10 +95,13 @@ router.delete('/:productId', function(req, res, next){
 
 router.get('/:productId/orders', function(req, res, next){
     if(!req.user.isAdmin) res.sendStatus(403);
-    return Order.findAll({
+    return Product.findOne({
         where: {
-            //fill this in later
+            id: req.params.productId
         }
+    })
+    .then(function(product){
+        return product.getOrders();
     })
     .then(function(orders){
         return res.json(orders);
@@ -94,10 +123,24 @@ router.get('/:productId/reviews', function(req, res, next){
 
 router.get('/:productId/carts', function(req, res, next){
     if(!req.user.isAdmin) res.sendStatus(403);
-    //res.redirect
+    return Product.findOne({
+        where: {
+            id: req.params.productId
+        }
+    })
+    .then(function(product){
+        return product.getOrders();
+    })
+    .then(function(orders){
+        return orders.filter( function(order) {
+            order.status === 0;
+        });
+    })
+    .then(function(filteredOrders){
+        return res.json(filteredOrders);
+    })
+    .catch(next);
 });
-
-
 
 
 module.exports = router;

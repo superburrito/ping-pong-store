@@ -41,6 +41,8 @@ module.exports = function (app, db) {
                 return next(error);
             }
 
+            console.log('Login successful for', user.firstName);
+
             // req.logIn will establish our session.
             req.logIn(user, function (loginErr) {
                 if (loginErr) return next(loginErr);
