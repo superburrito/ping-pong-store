@@ -6,32 +6,29 @@ var Review = models.Review;
 var Order = models.Order;
 var router = require('express').Router();
 
-router.get('/', function(req,res,next){ 
-	var userId = req.user.id;
-	console.log('User logged in is: ', req.user);
-	return User.findOne({
-		where: {
-			id: userId
-		}
-	})
-	.then(function(user){
-		if(user.isAdmin){
-			return User.findAll({})
-			.then(function(users){
-				return res.json(users);
-			});
-		}else{
-			return res.status(403).send();
-		}
+router.get('/', function(req, res, next){
+    if(!req.user.isAdmin) res.sendStatus(403);
+	return User.findAll({
+        where: req.query
+    })
+	.then(function(users){
+		return res.json(users);
 	});
 });
 
+router.post('/', function(req, res, next){
+    if(!req.user.isAdmin) res.sendStatus(403);
+    return User.create(req.body)
+    .then(function(createdUser){
+        return res.json(createdUser);
+    });
+});
 
-router.get('/:userId', function(req,res,next){
-	var intendedUser = req.params.userId;
+router.get('/:userId', function(req, res, next){
+	if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
 	User.findOne({
 		where: {
-			id: userId
+			id: req.params.userId
 		}
 	})
 	.then(function(user){
@@ -40,25 +37,43 @@ router.get('/:userId', function(req,res,next){
 	.catch(next);
 });
 
-
-router.post('/:userId/settings', function(req,res,next){
-	var userId = req.session.user.id;
-	return User.findOne({
-		where: {
-			id: userId
-		}
-	})
-	.then(function(user){
-		return user.update(req.body);
-	})
-	.catch(next);
+router.put('/:userId', function(req, res, next){
+    if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
+    User.findOne({
+        where: {
+            id: req.params.userId
+        }
+    })
+    .then(function(user){
+        return user.update(req.body);
+    })
+    .then(function(updatedUser){
+        return res.json(updatedUser);
+    })
+    .catch(next);
 });
 
-router.get('/:userId/orders', function(req,res,next){
-	var userId = req.session.user.id;
+router.delete('/:userId', function(req, res, next){
+    if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
+    User.findOne({
+        where: {
+            id: req.params.userId
+        }
+    })
+    .then(function(user){
+        return user.destroy(req.body);
+    })
+    .then(function(deletedUser){
+        return res.json(deletedUser);
+    })
+    .catch(next);
+});
+
+router.get('/:userId/orders', function(req, res, next){
+    if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
 	return Order.findAll({
 		where: {
-			userId: userId
+			userId: req.user.id
 		}
 	})
 	.then(function(orders){
@@ -67,11 +82,10 @@ router.get('/:userId/orders', function(req,res,next){
 	.catch(next);
 });
 
-router.get('/:userId/reviews', function(req,res,next){
-	var userId = req.session.user.id;
+router.get('/:userId/reviews', function(req, res, next){
 	return Review.findAll({
 		where: {
-			userId: userId
+			userId: req.user.id
 		}
 	})
 	.then(function(reviews){
@@ -80,10 +94,10 @@ router.get('/:userId/reviews', function(req,res,next){
 	.catch(next);
 });
 
-
-
-
-
+router.get('/:userId/cart', function(req, res, next){
+    if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
+    //res.redirect
+});
 
 module.exports = router;
 
