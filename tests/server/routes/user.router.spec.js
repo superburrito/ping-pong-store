@@ -26,7 +26,7 @@ describe('Members Route', function () {
 
 		beforeEach('Create guest agent', function (done) {
 			User.create({name:'paul', email: 'testing@fsa.com',
-			password: 'paul', address: '75 Wall St'
+			password: 'paul', address: '75 Wall St', isAdmin:false
 			})
 			.then(function(newUser){
 				console.log(newUser)
