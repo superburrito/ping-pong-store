@@ -8,7 +8,9 @@ var router = require('express').Router();
 
 router.get('/', function(req, res, next){
     if(!req.user.isAdmin) res.sendStatus(403);
-	return User.findAll()
+	return User.findAll({
+        where: req.query
+    })
 	.then(function(users){
 		return res.json(users);
 	});
