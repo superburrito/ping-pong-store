@@ -1,8 +1,8 @@
 app.config(function ($stateProvider) {
 
     $stateProvider.state('membersOnly', {
-        url: '/account',
-        template: 'js/members-only/members-only.html',
+        url: '/Account',
+        templateUrl: 'js/members-only/members-only.html',
         controller: function ($scope, Account) {
             Account.getAccountInfo().then(function (userAccount) {
                 $scope.account = userAccount;
@@ -10,9 +10,6 @@ app.config(function ($stateProvider) {
         },
         // The following data.authenticate is read by an event listener
         // that controls access to this state. Refer to app.js.
-        data: {
-            authenticate: true
-        }
     });
 
 });
