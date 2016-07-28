@@ -10,7 +10,7 @@ var Promise = require('sequelize').Promise;
 var seedUsers = function () {
     var users = [
         {firstName:'paul', lastName: 'hsu', email: 'testing@fsa.com', password: 'paul', address: '75 Wall St'},
-        {firstName:'yao', lastName: 'chua', email: '123@fsa.com', password: 'yao', address: '52 Mulberry St'},
+        {firstName:'yao', lastName: 'chua', email: '123@fsa.com', password: 'yao', address: '52 Mulberry St', isAdmin:true},
         {firstName:'john', lastName: 'henry', email: 'erhigu@fsa.com', password: 'john', address: '9 S William St'},
         {firstName:'will', lastName: 'laeri', email: 'qwe@fsa.com', password: 'will', address: '85 West Broadway'},
         {firstName:'joe', lastName: 'wat', email: 'erf@fsa.com', password: 'joe', address: '8 Stone St'},
@@ -47,7 +47,7 @@ var seedProducts = function () {
         {price: '1200', name: 'classic-25', category:'tables', brand: 'donic', inventory:'23', description:'perfect for those who want a world-class', imageUrl:'https://images-na.ssl-images-amazon.com/images/I/71CqOWllTsL._SL1500_.jpg'},
         {price: '1000', name: 'outdoor-25', category:'tables', brand: 'donic', inventory:'41', description:'waterproof!!', imageUrl:'http://sportinggoodschina.com/8-table-tennis-table/5-1b.jpg'},
         {price: '1750', name: 'premium-compact', category:'tables', brand: 'stiga', inventory:'10', description:'designed and engineered to combine a true tournament', imageUrl:'http://www.killerspin.com/media/wysiwyg/Content-Images/Home-Page/Killerspin-Revolution-Ping-Pong-Table-Tennis.jpg'},                
-        {price: '750', name: 'beginner-25', category:'tables', brand: 'stiga', inventory:'31', description:'buy one get ten free', imageUrl:'https://www.google.com/search?hl=zh-TW&authuser=0&biw=1349&bih=705&site=imghp&tbm=isch&sa=1&q=ping+pong+table&oq=ping+pong+table&gs_l=img.3..0j0i30l9.560273.560998.0.561190.5.2.0.3.3.0.85.138.2.2.0....0...1c.1.64.img..0.5.145.X1abp4T-HhY#imgrc=y6jN1twq1ZgOzM%3A'}
+        {price: '750', name: 'beginner-25', category:'tables', brand: 'stiga', inventory:'31', description:'buy one get ten free', imageUrl:'http://austinartisan.org/img/projects/258/img_3420__cover.jpg'}
         // {price: '89', name: 'beatiful-shoes', category: 'shoes', size:'5', brand: "butterfly", inventory:'23', description:'great looking', imageUrl:'http://i01.i.aliimg.com/wsphoto/v2/711790555_1/Wholesale-BUTTERFLY-WTS-2-professional-sports-shoes-couple-shoes-table-tennis-shoes.jpg'},
         // {price: '89', name: 'beatiful-shoes', category: 'shoes', size:'6', brand: "butterfly", inventory:'20', description:'great looking', imageUrl:'http://i01.i.aliimg.com/wsphoto/v2/711790555_1/Wholesale-BUTTERFLY-WTS-2-professional-sports-shoes-couple-shoes-table-tennis-shoes.jpg'},
         // {price: '89', name: 'beatiful-shoes', category: 'shoes', size:'7', brand: "butterfly", inventory:'12', description:'great looking', imageUrl:'http://i01.i.aliimg.com/wsphoto/v2/711790555_1/Wholesale-BUTTERFLY-WTS-2-professional-sports-shoes-couple-shoes-table-tennis-shoes.jpg'},
