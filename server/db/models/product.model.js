@@ -21,7 +21,7 @@ module.exports = db.define('product', {
         type: Sequelize.STRING,
         validate: {
             isIn: [['paddles','balls','cases',
-                    'shoes','tables','robots', '']]
+                    'tables','robots', '']]
         }
     },
     // Applies to shoes only
@@ -52,8 +52,22 @@ module.exports = db.define('product', {
         defaultValue: "http://www.daaddelhi.org/imperia/md/content/newdelhi/b_no_image_icon.gif"
     }
 }, {
-    getterMethods: {
-        rating: function () {
+    instanceMethods: {
+        calculateRating: function () {
+            console.log('this---', this)
+            return this.getReviews()
+            .then(function(reviews){
+                console.log("Calculate rating gets reviews:", reviews);
+                var average =0;
+                reviews.forEach(function(review){
+
+                    average+=review.score;
+                })
+                average/=reviews.length;
+          
+                return average;
+            });
+            
         }
     }
 });

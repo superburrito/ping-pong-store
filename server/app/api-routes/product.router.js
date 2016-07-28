@@ -50,13 +50,27 @@ router.post('/', function(req, res, next){
 });
 
 router.get('/:productId', function(req, res, next){
+
     Product.findOne({
         where: {
             id: req.params.productId
         }
     })
     .then(function(product){
-        return res.json(product);
+        //get the average rating for specific product
+        return product.getReviews()
+        .then(function(reviews){
+            var average = 0;
+            reviews.forEach(function(review){
+                average+=review.score;
+            })
+            average/=reviews.length;
+            product.rating = average;
+        })
+        .then(function(){
+            return res.json(product);
+        })
+        
     })
     .catch(next);
 });
@@ -92,6 +106,7 @@ router.delete('/:productId', function(req, res, next){
     })
     .catch(next);
 });
+
 
 router.get('/:productId/orders', function(req, res, next){
     if(!req.user.isAdmin) res.sendStatus(403);

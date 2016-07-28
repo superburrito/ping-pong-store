@@ -17,22 +17,22 @@ router.use('/account', function(req, res, next){
     res.redirect('/api/users/' + req.user.id);
 })
 
-router.use('/carts', function(req, res, next){
-    if(!req.user.isAdmin) res.sendStatus(403);
-    return Order.findAll({
-        where: {
-            status: 0
-        }
-    })
-    .then(function(carts){
-        return res.json(carts);
-    })
-    .catch(next);
-})
+// router.use('/carts', function(req, res, next){
+//     if(!req.user.isAdmin) res.sendStatus(403);
+//     return Order.findAll({
+//         where: {
+//             status: 0
+//         }
+//     })
+//     .then(function(carts){
+//         return res.json(carts);
+//     })
+//     .catch(next);
+// })
 
-router.use('/cart', function(req, res, next){
-    res.redirect('/api/users/' + req.user.id + '/cart');
-})
+// router.use('/cart', function(req, res, next){
+//     res.redirect('/api/users/' + req.user.id + '/cart');
+// })
 
 // Make sure this is after all of
 // the registered routes!
