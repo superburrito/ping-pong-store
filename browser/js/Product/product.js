@@ -2,21 +2,25 @@ app.config(function ($stateProvider) {
     $stateProvider.state('product', {
         url: '/product/:id',
         templateUrl: 'js/product/product.html',
-   		controller: function($scope, Product){
-   			homepage.getAllProducts().then(function(allProducts){
-   				$scope.products = allProducts
+   		controller: function($scope, Product, $stateParams, Cart){
+        $scope.Cart = Cart;
+   			Product.getOneProduct($stateParams.id)
+        .then(function(product){
+   				$scope.product = product;
    			})
-   		} 
+   		}
     });
 });
 
 app.factory('Product', function($http){
-	var getOneProduct = function(){
-		return $http.get('/api/products/'+ req.params.id).then(function(products){
-			return products.data;
+	let getOneProduct = function(id){
+    return $http.get('/api/products/'+ id)
+    .then(function(product){
+		  return product.data;
 		})
-	}
+	};
+
 return {
-	getAllProducts: getAllProducts
-}	
+	getOneProduct: getOneProduct,
+}
 })
