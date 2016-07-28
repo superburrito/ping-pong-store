@@ -1,6 +1,6 @@
 <section id="home">
     <rando-greeting></rando-greeting>
-    <div ng-repeat="product in products"> <a class="images" href='http://localhost:1337/api/products/{{ product.id }}'> {{ product.name }} {{product.category}}</a> <p class="price">$ {{ product.price }}</p>	
-    	<a href='http://localhost:1337/api/products/{{ product.id }}'><img src='{{ product.imageUrl }}' height="200" width="200"> </a></img>
+    <div ng-repeat="product in products"> <a class="images" ui-sref='product({id: product.id})'> {{ product.name }} {{product.category}}</a> <p class="price">$ {{ product.price }}</p>	
+    	<a href='http://localhost:1337/api/products/'+ {{ product.id }}'><img src='{{ product.imageUrl }}' height="200" width="200"> </a></img>
     </div>
 </section>

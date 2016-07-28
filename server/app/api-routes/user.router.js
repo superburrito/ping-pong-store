@@ -7,7 +7,7 @@ var Order = models.Order;
 var router = require('express').Router();
 
 router.get('/', function(req, res, next){
-    if(!req.user.isAdmin) res.sendStatus(403);
+    if(!req.user.isAdmin) return res.sendStatus(403);
 	return User.findAll({
         where: req.query
     })
@@ -17,7 +17,7 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/', function(req, res, next){
-    if(!req.user.isAdmin) res.sendStatus(403);
+    if(!req.user.isAdmin) return res.sendStatus(403);
     return User.create(req.body)
     .then(function(createdUser){
         return res.json(createdUser);
@@ -25,8 +25,8 @@ router.post('/', function(req, res, next){
 });
 
 router.get('/:userId', function(req, res, next){
-	if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
-	User.findOne({
+	if(!req.user.isAdmin && req.user.id != req.params.userId) return res.sendStatus(401);
+	return User.findOne({
 		where: {
 			id: req.params.userId
 		}
@@ -38,8 +38,8 @@ router.get('/:userId', function(req, res, next){
 });
 
 router.put('/:userId', function(req, res, next){
-    if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
-    User.findOne({
+    if(!req.user.isAdmin && req.user.id != req.params.userId) return res.sendStatus(403);
+    return User.findOne({
         where: {
             id: req.params.userId
         }
@@ -54,8 +54,8 @@ router.put('/:userId', function(req, res, next){
 });
 
 router.delete('/:userId', function(req, res, next){
-    if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
-    User.findOne({
+    if(!req.user.isAdmin && req.user.id != req.params.userId) res.sendStatus(403);
+    return User.findOne({
         where: {
             id: req.params.userId
         }
@@ -70,7 +70,7 @@ router.delete('/:userId', function(req, res, next){
 });
 
 router.get('/:userId/orders', function(req, res, next){
-    if(!req.user.isAdmin || req.user.id !== req.params.userId) res.sendStatus(403);
+    if(!req.user.isAdmin && req.user.id != req.params.userId) return res.sendStatus(403);
 	return Order.findAll({
 		where: {
 			userId: req.params.userId
@@ -95,7 +95,7 @@ router.get('/:userId/reviews', function(req, res, next){
 });
 
 router.get('/:userId/cart', function(req, res, next){
-    if(!req.user.isAdmin || req.user. id !== req.params.userId) res.sendStatus(403);
+    if(!req.user.isAdmin && req.user. id != req.params.userId) return res.sendStatus(403);
     return Order.findOne({
         where: {
             userId: req.params.userId,

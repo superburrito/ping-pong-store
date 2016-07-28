@@ -14,7 +14,7 @@ router.use('/reviews', require('./review.router.js'));
 router.use('/orders', require('./order.router.js'));
 
 router.use('/account', function(req, res, next){
-    res.redirect('/users/' + req.user.id);
+    res.redirect('/api/users/' + req.user.id);
 })
 
 router.use('/carts', function(req, res, next){
@@ -31,7 +31,7 @@ router.use('/carts', function(req, res, next){
 })
 
 router.use('/cart', function(req, res, next){
-    res.redirect('/users/' + req.user.id + '/cart');
+    res.redirect('/api/users/' + req.user.id + '/cart');
 })
 
 // Make sure this is after all of
