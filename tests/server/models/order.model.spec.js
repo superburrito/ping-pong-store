@@ -23,7 +23,6 @@ describe('Order model', function () {
         }).then(function(){
             var order = {
             	status: 1,
-            	sessionId: null,
             	address: 'wall street'
             }
             return newUser.createOrder(order)

@@ -6,11 +6,13 @@ var Sequelize = require('sequelize');
 var db = require('../../../server/db');
 
 var Product = db.model('product');
+var Review = db.model('review');
+var User = db.model('user');
 
 describe('Product model', function () {
 
     var newProduct;
-    beforeEach('Sync DB', function () {
+    before('Sync DB', function () {
         return Product.create({
             price: 2000,
             name: "Nimbus 2000",
@@ -23,7 +25,6 @@ describe('Product model', function () {
             imageUrl: "http://bravethewoods.com/wp-content/uploads/2014/08/9__24903.1400189799.386.513.png"
         }).then(function(paddle){
             newProduct = paddle;
-        }).then(function(){
             return db.sync({ force: true });
         });
     })
@@ -66,5 +67,6 @@ describe('Product model', function () {
                 expect(newProduct.imageUrl).to.exist;
             })
         });
+
     });
 });
