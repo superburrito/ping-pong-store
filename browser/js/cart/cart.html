@@ -1,0 +1,11 @@
+<section id="cart">
+    <div ng-repeat="cartItem in cartItems">
+    	{{ cartItem.product.name }}
+    	<br>
+    	{{ cartItem.product.price }}
+    	<br>
+    	You ordered: {{ cartItem.quantity }}
+    	<br>
+    	
+    </div>
+</section>

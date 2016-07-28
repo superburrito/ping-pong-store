@@ -1,20 +1,23 @@
-app.factory('Cart', function () {
-
+app.factory('Cart', function (Product) {
+    var CartFactory = {}
     //cart = {productKey1: quantity1, productKey2: quantity2... }
 
-    return {
-        add: function (productId, quantity) {
-            let number = Number(localStorage.getItem(productId)) + Number(quantity) || Number(quantity);
-            localStorage.setItem(productId, number);
-        },
-        remove: function (productId) {
-            localStorage.removeItem(productId);
-        },
-        empty: function () {
-            localStorage.clear();
-        },
-        get: function () {
-            return localStorage;
-        }
-    };
+    CartFactory.add = function (productId, quantity) {
+        let number = Number(localStorage.getItem(productId)) + Number(quantity) || Number(quantity);
+        localStorage.setItem(productId, number);
+    }
+
+    CartFactory.remove = function (productId) {
+        localStorage.removeItem(productId);
+    }
+
+    CartFactory.empty = function () {
+        localStorage.clear();
+    }
+    
+    CartFactory.get = function () {
+        return localStorage;
+    }
+
+    return CartFactory;
 });

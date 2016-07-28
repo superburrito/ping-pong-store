@@ -10,13 +10,3 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.factory('homepage', function($http){
-	var getAllProducts = function(){
-		return $http.get('/api/products').then(function(products){
-			return products.data;
-		})
-	}
-return {
-	getAllProducts: getAllProducts
-}	
-})
