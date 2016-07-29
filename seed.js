@@ -38,7 +38,7 @@ var seedProducts = function () {
         {price: '30', name: 'ping-pong-ball', category: 'balls', brand: "butterfly", quality:'2', inventory:'23', description:'not bad but not good', imageUrl:'https://cdn.shopify.com/s/files/1/1102/7688/products/Master_Ball_Single_large.jpg?v=1464423413'},
         {price: '10', name: 'ping-pong-ball', category: 'balls', brand: "butterfly", quality:'1', inventory:'198', description:'worst ball in the world', imageUrl:'http://rlv.zcache.com/pretty_monarch_butterfly_autumn_colors_ping_pong_ball-r2bfc469677b2487d98ba917f7aa4cd9f_6y0d3_324.jpg?rlvnet=1'},
         {price: '40', name: 'ping-pong-ball', category: 'balls', brand: "donic", quality:'3', inventory:'24', description:'great ball', imageUrl:'http://g02.a.alicdn.com/kf/HTB148kPIpXXXXaIXpXXq6xXFXXX2/Donic-Table-Tennis-font-b-Ball-b-font-3-font-b-Star-b-font-font-b.jpg'},
-        {price: '25', name: 'ping-pong-ball', category: 'balls', brand: "donic", quality:'2', inventory:'74', description:'not great ball', imageUrl:'https://www.google.com/search?hl=zh-TW&authuser=0&biw=1349&bih=705&site=imghp&tbm=isch&sa=1&q=ping+pong+ball+donic+two+star&oq=ping+pong+ball+donic+two+star&gs_l=img.3...33621.36778.0.36906.9.9.0.0.0.0.88.537.9.9.0....0...1c.1.64.img..0.0.0.3ax7nfTNxWE#imgrc=t2hi1MEQKj0_kM%3A'},
+        {price: '25', name: 'ping-pong-ball', category: 'balls', brand: "donic", quality:'2', inventory:'74', description:'not great ball', imageUrl:'https://hackadaycom.files.wordpress.com/2011/01/img_1198.jpg'},
         {price: '1', name: 'ping-pong-ball', category: 'balls', brand: "donic", quality:'1', inventory:'12', description:'can use it as pokeball', imageUrl:'http://www.hurtowniasportowa.eu/eng_pl_Table-tennis-ball-Donic-Coach-orange-7116_2.jpg'},
         {price: '1500', name: 'Terminator', category: 'robots', brand: "skynet", inventory:'15', description:'will destroy you!', imageUrl:'http://g01.a.alicdn.com/kf/HTB1_OVjIXXXXXX.XVXXq6xXFXXXB/Y-T-B3-3-Spins-font-b-Table-b-font-font-b-Tennis-b-font-font.jpg'},
         {price: '100', name: 'Robot-2000', category: 'robots', brand: "paddle-palace", inventory:'20', description:'stupid robot ever!', imageUrl:'https://upload.wikimedia.org/wikipedia/commons/9/92/TOPIO_3.jpg'},
@@ -103,7 +103,7 @@ var seedReviews = function () {
       for(var j=1; j<11; j++){
         var obj={
             title: sample[Math.ceil(Math.random()*6-1)],
-            score: Math.random()*6-1,
+            score: Math.ceil(Math.random()*6-1),
             feedback: sample[Math.ceil(Math.random()*6-1)],
             userId: j,
             productId: i

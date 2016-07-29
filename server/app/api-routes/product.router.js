@@ -38,8 +38,8 @@ router.get('/', function(req, res, next){
         where: req.query
     })
     .then(function(products){
-        return products.map(function(product){
-            return product.getReviews()
+        return Promise.all(products.map(function(product){
+             return product.getReviews()
             .then(function(reviews){
                 var average=0;
                 reviews.forEach(function(review){
@@ -47,11 +47,9 @@ router.get('/', function(req, res, next){
                 })
                 average/=reviews.length;
                 product.setRating(average);
-                console.log(product)
-                return product
+                return product;
             })
-        })
-        
+        }))
     })
     .then(function(products){
         return res.json(products);
