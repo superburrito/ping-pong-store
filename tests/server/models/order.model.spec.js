@@ -31,21 +31,13 @@ describe('Order model', function () {
         }).then(function(){
             return db.sync({ force: true });
         });
-    })
-
-    describe('make an order', function () {
-        describe('user exist', function () {
-            it('should exist', function () {
-                expect(newUser.email).to.exist;
-            })
-        });
-        describe('order is associate to user', function () {
-        	var address = 'wall street';
-            it('should exist', function () {
-        		expect(newOrder.address).to.be.equal(address);
-        		expect(newOrder.userId).to.be.equal(newUser.id);
-            })
-        });
     });
 
+    describe('when the user makes an order', function () {
+    	var address = 'wall street';
+        it('the order should have the correct address and userid', function () {
+    		expect(newOrder.address).to.be.equal(address);
+    		expect(newOrder.userId).to.be.equal(newUser.id);
+        });
+    });
 });

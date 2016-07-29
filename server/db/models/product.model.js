@@ -22,8 +22,8 @@ module.exports = db.define('product', {
     category: {
         type: Sequelize.STRING,
         validate: {
-            isIn: [['paddles','balls','cases',
-                    'tables','robots', '']]
+            isIn: [['paddle','ball','case',
+                    'table','robot']]
         }
     },
     // Applies to shoes only
