@@ -28,6 +28,7 @@ var seedUsers = function () {
 
 var seedProducts = function () {
     var products = [
+
         {price: '300', name: 'recursion', category: 'paddle', brand: "butterfly", inventory:'30', description:'good condition, great for curve ball', imageUrl:'http://www.killerspin.com/media/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/k/i/killerspin-kido-5a-rtg-table-tennis-racket-angle-red.png'},
         {price: '200', name: 'offensive', category: 'paddle', brand: "butterfly", inventory:'22', description:'good for offensive player', imageUrl:'http://i.ebayimg.com/images/i/251488549734-0-1/s-l1000.jpg'},
         {price: '100', name: 'defensive', category: 'paddle', brand: "butterfly", inventory:'5', description:'good for defenssive player', imageUrl:'https://upload.wikimedia.org/wikipedia/commons/2/26/Tabletennis.jpg'},
@@ -62,7 +63,7 @@ var seedReviews = function () {
       for(var j=1; j<11; j++){
         var obj={
             title: sample[Math.ceil(Math.random()*6-1)],
-            score: Math.random()*6-1,
+            score: Math.ceil(Math.random()*6-1),
             feedback: sample[Math.ceil(Math.random()*6-1)],
             userId: j,
             productId: i
