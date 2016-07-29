@@ -21,6 +21,7 @@ app.factory('Cart', function ($state, $http, Product) {
     }
 
     CartFactory.checkout = function (address, cartIds) {
+      $state.go('home');
       return $http.post('/api/orders/checkout/' + address, cartIds);
     }
 
