@@ -22,6 +22,12 @@ body {
     background-size:     cover;
 }
 
+#headerImage {
+  margin: auto;
+  display: block; 
+}
+
+
 fullstack-logo {
   display: block; }
   fullstack-logo img {
