@@ -1,9 +1,10 @@
 app.config(function ($stateProvider) {
     $stateProvider.state('home', {
-        url: '/',
-        templateUrl: 'js/home/home.html',
+      url: '/',
+      templateUrl: 'js/home/home.html',
    		controller: function($scope, homepage){
    			homepage.getAllProducts().then(function(allProducts){
+          console.log(allProducts[0])
    				$scope.products = allProducts
    			})
    		} 
