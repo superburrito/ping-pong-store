@@ -50,7 +50,6 @@ router.post('/', function(req, res, next){
 });
 
 router.get('/:productId', function(req, res, next){
-
     Product.findOne({
         where: {
             id: req.params.productId

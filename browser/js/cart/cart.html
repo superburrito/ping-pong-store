@@ -1,11 +1,22 @@
 <section id="cart">
+		<h2>Your Cart:</h2>
     <div ng-repeat="cartItem in cartItems">
-    	{{ cartItem.product.name }}
+    	<img src="{{ cartItem.product.imageUrl }}" height=80 ><br>
+    	You are buying {{ cartItem.product.name }} at price {{ cartItem.product.price }}.
     	<br>
-    	{{ cartItem.product.price }}
+    	You ordered {{ cartItem.quantity }} of this item.
     	<br>
-    	You ordered: {{ cartItem.quantity }}
-    	<br>
-    	
     </div>
+    <br>
+    <form name="checkoutForm" class="form-horizontal" ng-submit="checkout()"> 
+    	<fieldset>
+    		<legend>Deliver To: </legend>
+    		<div class="form-group">
+    			<input type="text" ng-value="defaultAddress" name="addressField" class="form-control" type="text" ng-model="typedAddress" ng-minlength="8" required>
+    		</div>
+    		<div>
+    			<button type="submit" class="btn btn-success" ng-disabled="checkoutForm.$invalid">Confirm Purchase</button>
+    		</div>
+    	</fieldset>
+    </form>
 </section>

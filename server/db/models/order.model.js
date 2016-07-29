@@ -15,7 +15,7 @@ module.exports = db.define('order', {
         allowNull: false
     },
     address: {
-    		type: Sequelize.STRING,
+    		type: Sequelize.TEXT,
     		allowNull: false
     }
 });
