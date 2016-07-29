@@ -8,5 +8,40 @@
     margin-top: 40px;
     text-align: center;
   }
+
+  #upperHome {
+  	margin-bottom: 1%;
+  }
+
+  #headerImage {
+    display: block;
+    margin: auto;
+    width: 90%;
+    height: 50%;
+  }
+
+  .thumbnail {
+  	padding: 20px;
+  	border-style: 1px solid black;
+  }
+
+	.prodIcon {
+	    position: relative;
+	    float: left;
+	    width:  120px;
+	    height: 120px;
+	    background-position: 50% 50%;
+	    background-repeat:   no-repeat;
+	    background-size:     cover;
+
+	}
+
+	.productLink {
+		font-size: 20px;
+		font-weight: bold;
+		text-decoration: none;
+	}	
+
+
 }
 
