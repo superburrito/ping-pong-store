@@ -1,5 +1,6 @@
 <section id="cart">
-		<h2>Your Cart:</h2>
+		<h3 ng-hide="emptyCart">Your Cart:</h3>
+        <h3 ng-show="emptyCart">Your Cart is Empty.</h3>
     <div ng-repeat="cartItem in cartItems">
     	<img src="{{ cartItem.product.imageUrl }}" height=80 ><br>
     	You are buying {{ cartItem.product.name }} at price {{ cartItem.product.price }}.
@@ -8,7 +9,7 @@
     	<br>
     </div>
     <br>
-    <form name="checkoutForm" class="form-horizontal" ng-submit="checkout()"> 
+    <form name="checkoutForm" ng-hide="emptyCart" class="form-horizontal" ng-submit="checkout()"> 
     	<fieldset>
     		<legend>Deliver To: </legend>
     		<div class="form-group">
