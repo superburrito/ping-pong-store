@@ -6,6 +6,7 @@ var Review = models.Review;
 var router = require('express').Router();
 var Order = models.Order;
 var Orderproduct = models.Orderproduct;
+var Promise = require('bluebird');
 
 
 router.get('/', function(req, res, next){
@@ -19,14 +20,28 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/checkout/:address', function(req,res,next){
-    return Order.create({
+    var orderProm = Order.create({
         status: 0,
         address: req.params.address
+    });
+    var userProm = User.findOne({
+        where: {
+            id: req.user.id
+        }
+    });
+    Promise.all([orderProm, userProm])
+    .spread(function(order,user){
+        if (user){
+            return order.setUser(user);
+        }else{
+            return order;
+        }
+        console.log("passed order is: ", order);
     })
     .then(function(order){
         console.log("Created order is: ", order);
         console.log("Cart ids array is:", req.body);
-        req.body.forEach(function(productId){
+        Promise.each(req.body, function(productId){
             return Orderproduct.findOrCreate({
                 where: {
                     orderId: order.id,

@@ -1,20 +1,27 @@
 app.controller('CartCtrl', function($scope, $stateParams, Cart, Product){	
-	$scope.cartItems = [];
 
-	Object.keys(localStorage).forEach(function(productId){
-		console.log("Current ProductId on Cart is: ", productId);
-		return Product.getOneProduct(productId)
-		.then(function(product){
-			var quantity = localStorage[productId];
-			console.log("Product found, quantity is: ", quantity, " and item is: ", product);
-			$scope.cartItems.push({
-				quantity: quantity,
-				product: product
+	$scope.cartItems = [];
+	$scope.emptyCart = true;
+
+	var cartKeys = Object.keys(Cart.get());
+
+	if(cartKeys.length > 0){
+		$scope.emptyCart = false;
+		cartKeys.forEach(function(productId){
+			console.log("Current ProductId on Cart is: ", productId);
+			return Product.getOneProduct(productId)
+			.then(function(product){
+				var quantity = localStorage[productId];
+				console.log("Product found, quantity is: ", quantity, " and item is: ", product);
+				$scope.cartItems.push({
+					quantity: quantity,
+					product: product
+				});
 			});
 		});
-	});
+	}
 
-	// Set checkoutaddress default
+	// Let checkoutaddress default to user's address
 	$scope.defaultAddress = '';
 	Cart.checkoutAddress()
 	.then(function(userAddress){
@@ -31,6 +38,8 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product){
 				cartIds.push(item.product.id);
 			}
 		});
+		$scope.cartItems = [];
+		Cart.empty()
 		return Cart.checkout($scope.typedAddress, cartIds);
 	};
 	
