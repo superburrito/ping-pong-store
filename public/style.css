@@ -8,26 +8,6 @@ body {
   padding-top: 60px;
   margin: 0 auto; }
 
-.thumbnail {
-  width: 250px !important;
-  height: 250px !important;
-}
-.img {
-    position: relative;
-    float: left;
-    width:  100px;
-    height: 100px;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
-}
-
-#headerImage {
-  margin: auto;
-  display: block; 
-}
-
-
 fullstack-logo {
   display: block; }
   fullstack-logo img {
