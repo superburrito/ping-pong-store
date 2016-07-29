@@ -4,6 +4,8 @@ var Sequelize = require('sequelize');
 
 var db = require('../_db');
 
+var Reviews = require('./review.model')
+
 module.exports = db.define('product', {
     price: {
         type: Sequelize.INTEGER,
@@ -50,24 +52,45 @@ module.exports = db.define('product', {
             isUrl: true
         },
         defaultValue: "http://www.daaddelhi.org/imperia/md/content/newdelhi/b_no_image_icon.gif"
+    },
+    rating: {
+        type: Sequelize.FLOAT
     }
 }, {
     instanceMethods: {
-        calculateRating: function () {
-            console.log('this---', this)
-            return this.getReviews()
-            .then(function(reviews){
-                console.log("Calculate rating gets reviews:", reviews);
-                var average =0;
-                reviews.forEach(function(review){
 
-                    average+=review.score;
-                })
-                average/=reviews.length;
-          
-                return average;
-            });
-            
+        setRating : function(rating){
+            this.rating = rating;
         }
+
+        // calculateRating: function () {
+        //     return Reviews.findAll({
+        //         where:{
+        //             productId: this.id
+        //         }
+        //     }).then(function(reviews){
+        //         var average =0;
+        //         reviews.forEach(function(review){
+        //             average+=review.score;
+        //         })
+        //         average/=reviews.length;
+          
+        //         return average;
+        //     })
+        // }
+            // return this.getReviews()
+            // .then(function(reviews){
+            //     console.log("Calculate rating gets reviews:", reviews);
+            //     var average =0;
+            //     reviews.forEach(function(review){
+
+            //         average+=review.score;
+            //     })
+            //     average/=reviews.length;
+          
+            //     return average;
+            // });
+            
+        //}
     }
 });
