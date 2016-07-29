@@ -5,6 +5,7 @@ var User = models.User;
 var Review = models.Review;
 var router = require('express').Router();
 var http = require('http');
+var Promise = require('bluebird');
 
 // router.use('/', function(req, res, next){
 //     if(!req.user){
@@ -37,8 +38,24 @@ router.get('/', function(req, res, next){
         where: req.query
     })
     .then(function(products){
+        return products.map(function(product){
+            return product.getReviews()
+            .then(function(reviews){
+                var average=0;
+                reviews.forEach(function(review){
+                    average+=review.score;
+                })
+                average/=reviews.length;
+                product.setRating(average);
+                console.log(product)
+                return product
+            })
+        })
+        
+    })
+    .then(function(products){
         return res.json(products);
-    });
+    })
 });
 
 router.post('/', function(req, res, next){
@@ -64,7 +81,7 @@ router.get('/:productId', function(req, res, next){
                 average+=review.score;
             })
             average/=reviews.length;
-            product.rating = average;
+            product.setRating(average);
         })
         .then(function(){
             return res.json(product);
