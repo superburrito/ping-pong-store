@@ -10,13 +10,52 @@ var Promise = require('bluebird');
 
 
 router.get('/', function(req, res, next){
-    if(!req.user.isAdmin) res.sendStatus(403);
-    return Order.findAll({
-        where: req.query
-    })
-    .then(function(orders){
-        return res.json(orders);
-    });
+    if(!req.user.isAdmin) {
+        Order.findAll({
+            where:{
+                userId: req.user.id
+            }
+        })
+        .then(function(orders){
+            return Promise.all(orders.map(function(order){
+                return Orderproduct.findAll({
+                    where: {
+                        orderId: order.id
+                    }
+                })
+                .then(function(orderProducts){
+                    return Promise.all(orderProducts.map(function(orderProduct){
+                        return Product.findById(orderProduct.productId)
+                        .then(function(product){
+                            orderProduct.product = product;
+                            return orderProduct;
+                        })
+                    }))
+                })
+            }))
+        })
+        .then(function(orders){
+            var allOrders =[];
+            for(var i=0; i<orders.length; i++){
+                for(var j=0; j<orders[i].length; j++){
+                    var obj={};
+                    obj.orderDetail = orders[i][j].dataValues;
+                    obj.productDetail = orders[i][j].product;
+                    allOrders.push(obj);
+                }
+            }
+            return res.json(allOrders);
+        })
+        
+    }
+    else{
+        return Order.findAll({
+            where: req.query
+        })
+        .then(function(orders){
+            return res.json(orders);
+        });
+    }
 });
 
 router.post('/checkout/:address', function(req,res,next){
