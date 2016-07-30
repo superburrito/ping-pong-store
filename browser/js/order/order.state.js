@@ -4,5 +4,11 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/order/order.html',
 		controller: 'OrderCtrl'
     });
+
+    $stateProvider.state('newReview', {
+    	url: '/order/review/:productId',
+    	templateUrl: 'js/order/review/review.form.html',
+    	controller: 'ReviewFormCtrl'
+    });
 });
 

@@ -10,6 +10,8 @@
     	<br>
     	You ordered {{ order.orderDetail.quantity }} of this item.
     	<br>
+        <a ui-sref="newReview({productId: {{ order.productDetail.id }} })">Write a review here</a>
     </div>
+
     <br>
 </section>
