@@ -3,20 +3,19 @@ app.config(function ($stateProvider) {
       url: '/',
       templateUrl: 'js/home/home.html',
    		controller: function($scope, homepage){
-        $scope.categories = ['paddle','ball','case',
-                    'table','robot'];
+        $scope.categories = ['Paddle','Ball','Case',
+                    'Table','Robot'];
         $scope.selectedCategory = '';
 
-        $scope.orderOptions = ['price', 'rating'];
+        $scope.orderOptions = ['Price', 'Rating'];
         $scope.orderOption = '';
         $scope.finalOrderOption = $scope.ascDesc + $scope.orderOption;
 
-        $scope.ascDescOptions = ['ascending', 'descending']
-        $scope.selectedAscDesc = 'descending';
+        $scope.ascDescOptions = ['Ascending', 'Descending']
+        $scope.selectedAscDesc = 'Descending';
         $scope.ascDesc = function (){
-          if ($scope.selectedAscDesc === 'ascending'){
+          if ($scope.selectedAscDesc === 'Ascending'){
             return false;
-
           }
           else return true;
         }
