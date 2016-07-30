@@ -1,0 +1,15 @@
+<section id="order">
+    Your Order history
+    <div ng-repeat="order in orders">
+    	<img src="{{ order.productDetail.imageUrl }}" height=80 ><br>
+    	You have bought {{ order.productDetail.name }}
+    	<br>
+    	price {{ order.productDetail.price }}
+    	<br>
+    	 at {{ order.orderDetail.createdAt }}
+    	<br>
+    	You ordered {{ order.orderDetail.quantity }} of this item.
+    	<br>
+    </div>
+    <br>
+</section>
