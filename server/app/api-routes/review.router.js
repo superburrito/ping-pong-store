@@ -16,10 +16,20 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/', function(req, res, next){
-    return Review.create(req.body)
-    .then(function(createdReview){
-        return res.json(createdReview);
-    });
+
+    Review.findOrCreate({
+        where:{
+            userId: req.body.userId,
+            productId: req.body.productId,
+            title: req.body.title,
+            score: req.body.score,
+            feedback: req.body.feedback
+        }
+    })
+    .spread(function(review,created){
+        res.send(200, {'created':created})
+    })
+    
 });
 
 router.get('/:reviewId', function(req, res, next){
