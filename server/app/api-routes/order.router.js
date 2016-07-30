@@ -17,34 +17,10 @@ router.get('/', function(req, res, next){
             }
         })
         .then(function(orders){
-            return Promise.all(orders.map(function(order){
-                return Orderproduct.findAll({
-                    where: {
-                        orderId: order.id
-                    }
-                })
-                .then(function(orderProducts){
-                    return Promise.all(orderProducts.map(function(orderProduct){
-                        return Product.findById(orderProduct.productId)
-                        .then(function(product){
-                            orderProduct.product = product;
-                            return orderProduct;
-                        })
-                    }))
-                })
-            }))
+            return findOrderProduct(orders);
         })
         .then(function(orders){
-            var allOrders =[];
-            for(var i=0; i<orders.length; i++){
-                for(var j=0; j<orders[i].length; j++){
-                    var obj={};
-                    obj.orderDetail = orders[i][j].dataValues;
-                    obj.productDetail = orders[i][j].product;
-                    allOrders.push(obj);
-                }
-            }
-            return res.json(allOrders);
+            return res.json(placeAllProduct(orders));
         })
         
     }
@@ -53,10 +29,45 @@ router.get('/', function(req, res, next){
             where: req.query
         })
         .then(function(orders){
-            return res.json(orders);
-        });
+            return findOrderProduct(orders);
+        })
+        .then(function(orders){           
+            return res.json(placeAllProduct(orders));
+        })
     }
 });
+
+function findOrderProduct(orders){
+    return Promise.all(orders.map(function(order){
+        return Orderproduct.findAll({
+            where: {
+                orderId: order.id
+            }
+        })
+        .then(function(orderProducts){
+            return Promise.all(orderProducts.map(function(orderProduct){
+                return Product.findById(orderProduct.productId)
+                .then(function(product){
+                    orderProduct.product = product;
+                    return orderProduct;
+                })
+            }))
+        })
+    }))
+}
+
+function placeAllProduct(orders){
+    var allOrders=[];
+    for(var i=0; i<orders.length; i++){
+        for(var j=0; j<orders[i].length; j++){
+            var obj={};
+            obj.orderDetail = orders[i][j].dataValues;
+            obj.productDetail = orders[i][j].product;
+            allOrders.push(obj);
+        }
+    }
+    return allOrders;
+}
 
 router.post('/checkout/:address', function(req,res,next){
     var orderProm = Order.create({
