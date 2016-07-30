@@ -1,0 +1,59 @@
+<section id="members-area">
+    <h3> Welcome, {{account.firstName}}!
+    </h3>
+    	<p>Review and update your acccount settings here:</p>
+
+    <div>
+        <a ng-click="showSettings()">
+              <span class="glyphicon glyphicon glyphicon-tag"></span>
+              View current address and payment methods
+        </a>
+        <div class="currentPaymentinfo" ng-show="showPaySettings">
+            <b>Current address and payment info</b>
+            <br></br>
+            Address: {{account.address}}
+        </div>
+    </div>    
+    <div>
+	    <a ng-click="updateSettings()">
+	          <span class="glyphicon glyphicon glyphicon-cog"></span>
+	          Update address and payment methods
+	    </a>
+        <div class="paymentForm" ng-show="updatePaySettings"> <!-- Will add action/method -->
+            <form name="paymentForm" ng-model="account" action="" method="">
+                <b>Payment info</b> 
+                <br></br>
+                First Name:<br>
+                <input type="text" name="firstName"></br>
+                Last Name: <br>
+                <input type="text" name="lastName"><br><br>
+                Card Type:<br>
+                <form>
+                    <input type="radio" name="Visa" value="Visa" checked> Visa<br>
+                    <input type="radio" name="Mastercard" value="MasterCard"> MasterCard<br>
+                    <input type="radio" name="Amex" value="Amex"> American Express
+                </form></br>
+
+                Card Number:<br>
+                 <input type="text" name="cardNumber"><br>
+                 <br>
+                Expiration Date:<br>
+                 <input type="month" name="expDate"><br>
+                 <br>
+                <b>Billing Address</b> 
+                <br><br>
+                Address:<br>
+                <input type="text" ng-model="account.address"name="address"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+
+        </div>
+    </div>
+    <div> 
+    	<a ui-sref-active="active" ui-sref="account">
+     	 <span class="glyphicon glyphicon glyphicon-list-alt"></span>
+         View wishlist 
+    	</a>
+    </div>
+
+</section>
