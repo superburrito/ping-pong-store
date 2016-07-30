@@ -29,15 +29,15 @@
     }
   }
 
-  .form-group {
+
+  .filterPanel .form-group {
     background-color: black;
     font-size: 20px;
     border: 1px solid black;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
     padding: 10px;
     text-align: center;
     color: #ddd;
+    margin-bottom: 0px;
     select {
       border-radius: 0px;
     }
@@ -50,9 +50,6 @@
   }
 
 
-  .filterPanel {
-    padding-bottom: 20px
-  }
 
   .filterLabel {
     margin: 5px;
@@ -72,7 +69,6 @@
   .product {
     display: inline-block;
     border: 1px solid #ddd;
-    border-radius: 4px;
     padding: 5px;
     text-align: center;
   }
