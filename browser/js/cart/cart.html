@@ -8,6 +8,7 @@
     	You ordered {{ cartItem.quantity }} of this item.
     	<br>
     </div>
+    <h3>Total Price: $ {{ totalPrice }}</h3>
     <br>
     <form name="checkoutForm" ng-hide="emptyCart" class="form-horizontal" ng-submit="checkout()"> 
     	<fieldset>

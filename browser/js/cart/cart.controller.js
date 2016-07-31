@@ -4,7 +4,7 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product){
 	$scope.emptyCart = true;
 
 	var cartKeys = Object.keys(Cart.get());
-
+	var totalPrice = 0;
 	if(cartKeys.length > 0){
 		$scope.emptyCart = false;
 		cartKeys.forEach(function(productId){
@@ -13,13 +13,18 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product){
 			.then(function(product){
 				var quantity = localStorage[productId];
 				console.log("Product found, quantity is: ", quantity, " and item is: ", product);
+				totalPrice+= quantity*product.price;
 				$scope.cartItems.push({
 					quantity: quantity,
 					product: product
 				});
-			});
+			})
+			.then(function(){
+				$scope.totalPrice = totalPrice;
+			})
 		});
 	}
+	
 
 	// Let checkoutaddress default to user's address
 	$scope.defaultAddress = '';
