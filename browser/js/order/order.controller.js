@@ -1,9 +1,6 @@
-app.controller('OrderCtrl', function($scope, OrderFactory){
-
-	OrderFactory.show()
+app.controller('OrderCtrl', function($scope, Order){
+	Order.show()
 	.then(function(allOrders){
-		console.log(allOrders)
 		$scope.orders = allOrders;
 	})
-
 })

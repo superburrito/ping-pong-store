@@ -16,20 +16,29 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/', function(req, res, next){
-
-    Review.findOrCreate({
-        where:{
-            userId: req.body.userId,
-            productId: req.body.productId,
-            title: req.body.title,
-            score: req.body.score,
-            feedback: req.body.feedback
-        }
-    })
-    .spread(function(review,created){
-        res.send(200, {'created':created})
-    })
-    
+    return Review.findOne({
+                where:{
+                    userId: req.body.userId,
+                    productId: req.body.productId
+                }
+            })
+            .then(function(review){
+                if(review) return res.send(200,{created:true});
+                else{
+                    Review.create({
+                        where:{
+                            userId: req.body.userId,
+                            productId: req.body.productId,
+                            title: req.body.title,
+                            score: req.body.score,
+                            feedback: req.body.feedback
+                        }
+                    })
+                    .then(function(){
+                        return res.send(200,{created:false});
+                    })
+                }
+            });
 });
 
 router.get('/:reviewId', function(req, res, next){
