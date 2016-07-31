@@ -1,4 +1,4 @@
-app.factory('OrderFactory', function($state, $http){
+app.factory('Order', function($state, $http){
 	var OrderFactory = {};
 
 	OrderFactory.show = function(){
