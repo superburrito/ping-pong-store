@@ -17,17 +17,29 @@ router.get('/', function(req, res, next){
 
 router.post('/', function(req, res, next){
 
-    Review.findOrCreate({
+    Review.find({
         where:{
             userId: req.body.userId,
-            productId: req.body.productId,
-            title: req.body.title,
-            score: req.body.score,
-            feedback: req.body.feedback
+            productId: req.body.productId          
         }
     })
-    .spread(function(review,created){
-        res.send(200, {'created':created})
+    .then(function(review){
+        if(review){
+            return res.send(200, {'created':true})
+        }else{
+            Review.create({
+                where:{
+                    userId: req.body.userId,
+                    productId: req.body.productId,
+                    title: req.body.title,
+                    score: req.body.score,
+                    feedback: req.body.feedback               
+                }
+            })
+            .then(function(){
+                return res.send(200, {'created':false})
+            })      
+        }       
     })
     
 });

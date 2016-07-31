@@ -1,7 +1,6 @@
 app.controller('ReviewFormCtrl', function($scope,ReviewFactory,AuthService,$stateParams,$state){
 	$scope.newReview = {};
 	$scope.state = $state.current;
-	console.log($stateParams)
 	$scope.createReview = function(){
 		AuthService.getLoggedInUser().then(function (user) {
             $scope.newReview.userId = user.id;
@@ -11,6 +10,8 @@ app.controller('ReviewFormCtrl', function($scope,ReviewFactory,AuthService,$stat
         .then(function(newReview){
         	ReviewFactory.setReview(newReview)
 			.then(function(review){
+				if(review.created) alert('You already write a review for this order')
+				else alert('Thanks for your feedback!!')
 				$state.go('order');
 			})
         })
