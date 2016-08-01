@@ -21,6 +21,11 @@
 
     <div class="col-xs-10 col-xs-offset-1 lowerProduct">
     	<h4>User Reviews for this product:</h4>
+      <div class="review" ng-repeat="review in reviews">
+        <label>{{ review.title }}</label> 
+        <br>
+        {{ review.feedback }}
+      </div>
     </div>
 
 </section>

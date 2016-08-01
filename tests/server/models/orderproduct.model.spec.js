@@ -17,7 +17,7 @@ describe('Orderproduct model', function () {
         var productProm = Product.create({
             price: 2000,
             name: "Nimbus 2000",
-            category: "paddle",
+            category: "Paddle",
             size: null,
             quality: null,
             brand: "Yonex",
