@@ -1,4 +1,9 @@
-app.controller('ProductsCtrl', function($scope, Products){
+app.controller('ProductsCtrl', function($scope, Products, AuthService){
+
+	scope.isAdmin = false
+	AuthService.getLoggedInUser().then(function (user) {
+        if(scope.user.isAdmin) $scope.isAdmin = true;
+    });
 
     $scope.categories = ['Paddles','Balls','Cases','Tables','Robots'];
 

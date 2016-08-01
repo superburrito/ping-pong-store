@@ -25,15 +25,8 @@ router.post('/', function(req, res, next){
             .then(function(review){
                 if(review) return res.send(200,{created:true});
                 else{
-                    Review.create({
-                        where:{
-                            userId: req.body.userId,
-                            productId: req.body.productId,
-                            title: req.body.title,
-                            score: req.body.score,
-                            feedback: req.body.feedback
-                        }
-                    })
+                    console.log('inside router')
+                    Review.create(req.body)
                     .then(function(){
                         return res.send(200,{created:false});
                     })

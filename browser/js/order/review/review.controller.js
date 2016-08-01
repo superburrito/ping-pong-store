@@ -2,7 +2,9 @@ app.controller('ReviewFormCtrl', function($scope,ReviewFactory,AuthService,$stat
 	$scope.newReview = {};
 	$scope.state = $state.current;
 	$scope.createReview = function(){
+
 		AuthService.getLoggedInUser().then(function (user) {
+			$scope.newReview.score = Number($scope.newReview.score);
             $scope.newReview.userId = user.id;
             $scope.newReview.productId = $stateParams.productId;
             return $scope.newReview
