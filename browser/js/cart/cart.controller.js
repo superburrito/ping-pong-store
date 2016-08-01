@@ -1,4 +1,4 @@
-app.controller('CartCtrl', function($scope, $stateParams, Cart, Product,$window){	
+app.controller('CartCtrl', function($scope, $stateParams, Cart, Product,$window){
 
 	$scope.cartItems = [];
 	$scope.emptyCart = true;
@@ -23,7 +23,7 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product,$window)
 			})
 		});
 	}
-	
+
 
 	// Let checkoutaddress default to user's address
 	$scope.defaultAddress = '';
@@ -44,6 +44,7 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product,$window)
 		});
 		$scope.cartItems = [];
 		Cart.empty()
+        $state.go('checkout');
 		return Cart.checkout($scope.typedAddress, cartIds);
 	};
 
@@ -59,6 +60,6 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product,$window)
 		Cart.updateQuantity(productId,quantity);
 		$window.location.reload();
 	}
-	
+
 });
 

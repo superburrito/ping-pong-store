@@ -1,0 +1,26 @@
+<section id = "checkout">
+  <legend>Deliver To: </legend>
+  <div class="form-group">
+      <input type="text" ng-value="defaultAddress" name="addressField" class="form-control" type="text" ng-model="typedAddress" ng-minlength="8" required>
+  </div>
+  <legend>Payment Method: </legend>
+      <div id="charge-error" class="alert alert-danger payment-errors"></div>
+      <div class="form-group">
+        <label>Credit Card Info</label>
+        <input type="tel" class="form-control card-number cc-number" data-stripe="number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required>
+      </div>
+      <div class="form-group">
+        <input type="tel" class="form-control cc-cvc card-cvc" data-stripe="cvc" autocomplete="off" placeholder="CVC" required>
+      </div>
+      <div class="form-group">
+        <label>Card Expiration Date</label>
+        <input type="text" data-stripe="exp-month" placeholder="MM" class="card-expiry-month form-control" required>
+        <input type="text" data-stripe="exp-year" placeholder="YYYY" class="card-expiry-year form-control" required>
+      </div>
+  <div class="form-group">
+      <input type="text" ng-value="defaultAddress" name="addressField" class="form-control" type="text" ng-model="typedAddress" ng-minlength="8" required>
+  </div>
+  <div>
+      <button type="submit" class="btn btn-success" ng-disabled="checkoutForm.$invalid">Confirm Purchase</button>
+  </div>
+</section>
