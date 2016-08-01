@@ -4,6 +4,7 @@ app.factory('Order', function($state, $http){
 	OrderFactory.show = function(){
 		return $http.get('/api/orders')
 		.then(function(response){
+			console.log('res', response)
 			return response.data
 		})
 	}
