@@ -40,7 +40,7 @@
                         <option value="">All Products</option>
                     </select>
                      <select ng-init="selectedOrder = orderOptions[0]" ng-model="selectedOrder" class="filterBox form-control">
-                        <option ng-repeat="orderOption in orderOptions" value="{{orderOption}}"> {{ orderOption }}</option>
+                        <option ng-repeat="orderOption in orderOptions" value="{{orderOption | lowercase }}"> {{ orderOption }}</option>
                     </select>                       
                     <select ng-init="selectedAscDesc = ascDescOptions[0]" ng-model="selectedAscDesc" class="filterBoxLast form-control">
                         <option ng-repeat="order in ascDescOptions" value="{{order}}" ng-click="ascDesc()"> {{ order }}</option>
