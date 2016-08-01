@@ -53,6 +53,25 @@ router.get('/:reviewId', function(req, res, next){
     .catch(next);
 });
 
+router.get('/:reviewId/author', function(req, res, next){
+    Review.findOne({
+        where: {
+            id: req.params.reviewId
+        }
+    })
+    .then(function(review){
+        return review.getUser();
+    })
+    .then(function(user){
+        return res.send({
+            firstName: user.firstName,
+            lastName: user.lastName
+        })
+    })
+    .catch(next);
+});
+
+
 router.put('/:reviewId', function(req, res, next){
     Order.findOne({
         where: {

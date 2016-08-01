@@ -39,10 +39,10 @@
                         <option ng-repeat="cat in categories" value="{{cat}}"> {{ cat }}</option>
                         <option value="">All Products</option>
                     </select>
-                     <select ng-init="selectedOrder = orderOptions[0]" ng-model="selectedOrder" class="filterBox form-control">
+                     <select ng-init="selectedOrder = ''" ng-model="selectedOrder" class="filterBox form-control">
                         <option ng-repeat="orderOption in orderOptions" value="{{orderOption | lowercase }}"> {{ orderOption }}</option>
                     </select>                       
-                    <select ng-init="selectedAscDesc = ascDescOptions[0]" ng-model="selectedAscDesc" class="filterBoxLast form-control">
+                    <select ng-init="selectedAscDesc = ''" ng-model="selectedAscDesc" class="filterBoxLast form-control">
                         <option ng-repeat="order in ascDescOptions" value="{{order}}" ng-click="ascDesc()"> {{ order }}</option>
                     </select>
 <!-- 
