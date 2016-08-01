@@ -1,18 +1,34 @@
 <section id="product">
     <div class="col-xs-10 col-xs-offset-1 upperProduct">
-   		<div class="productLabel">
-	    	<p>
-	      	<label class="productName"> {{ product.name }} {{product.category}}</label> for 
-	      	<label class="productPrice"> {{ product.price / 100 | currency}}</label>
-	      </p>
-	    </div>
-      <img src="{{ product.imageUrl }}" class='product' height="200" width="200">
-      <h3> Rating: {{ product.rating }} </h3>
-    	<button type="button" class="btn btn-success productsBtn" ng-click="Cart.add(product.id, 1)">Add to Cart</button>		
+      <div class="row">
+
+     		<div class="col-xs-12 col-md-3 productImage">
+          <img src="{{product.imageUrl}}">
+  	    </div>
+
+        <div class="col-xs-12 col-md-9 productInfo">
+          <p>
+            <label class="productName"> {{ product.name }} {{product.category}}</label> for 
+            <label class="productPrice"> {{ product.price / 100 | currency}}</label>
+          </p>
+          <h4 class="userRating"> Users rated this product: {{ product.rating }} / 5.0 </h4>
+          <h4 class="prodDescript1"> Product Description: </h4>
+          <h4 class="prodDescript2"> {{ product.description }} </h4>
+        	<button type="button" class="btn btn-success productsBtn" ng-click="Cart.add(product.id, 1)">Add to Cart</button>		
+          <button type="button" class="btn btn-warning productsBtn" ng-click="returnToStore()">Back to Store</button> 
+        </div>      
+
+      </div>
     </div>
 
     <div class="col-xs-10 col-xs-offset-1 lowerProduct">
-    	<h3>What our users have to say:</h3>
+    	<h4>User Reviews for this product:</h4>
+      <div class="review" ng-repeat="review in reviews">
+        <label>{{ review.title }}</label> by 
+        <label>{{ review.firstName }} {{ review.lastName }}</label>
+        <br>
+        {{ review.feedback }}
+      </div>
     </div>
 
 </section>

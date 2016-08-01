@@ -11,7 +11,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 { label: 'My Cart', state: 'cart' },
                 { label: 'Order', state: 'order', auth: true},
                 { label: 'Account', state: 'account', auth: true},
-                { label: 'Create Product', state: 'account'}
+                { label: 'Create Product', state: 'createProduct', auth: true}
             ];
 
             scope.user = null;
@@ -34,12 +34,12 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 });
             };
 
-            scope.isAdmin = function(){
-                AuthService.getLoggedInUser().then(function (user) {
-                    return user.isAdmin;
-                })
-                
-            }
+           //  scope.isAdmin = function(){
+           //      AuthService.getLoggedInUser().then(function (user) {
+           //          if(user) return user.isAdmin;
+           //          else return false;
+           //      })      
+           // }
 
             var removeUser = function () {
                 scope.user = null;
