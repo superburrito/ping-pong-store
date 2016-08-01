@@ -11,15 +11,21 @@
               </a>
             </li>
             <li>
-              <a ui-sref-active="active" ui-sref="order">
+              <a ng-show="item.auth || isLoggedIn()" ui-sref-active="active" ui-sref="order">
                   <span class="glyphicon glyphicon-tasks"></span>
                   Orders 
               </a>
             </li>
             <li>
-              <a ng-show="!item.auth || isLoggedIn()" ui-sref-active="active" ui-sref="account">
+              <a ng-show="item.auth || isLoggedIn()" ui-sref-active="active" ui-sref="account">
                   <span class="glyphicon glyphicon-user"></span>
                   Account
+              </a>
+            </li>
+            <li>
+              <a ng-show="isAdmin()" ui-sref-active="active" ui-sref="account">
+                  <span class="glyphicon glyphicon-user"></span>
+                  Create Product
               </a>
             </li>
 
