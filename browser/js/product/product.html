@@ -1,11 +1,18 @@
 <section id="product">
-    <div>
-        <h3 class='product'> {{ product.name }} {{product.category}} </h3>
-        <p class="price product">{{ product.price / 100 | currency}}</p>
-        <img src="{{ product.imageUrl }}" class='product' height="200" width="200"></img>
-        <h3> Rating: {{ product.rating }} </h3>
+    <div class="col-xs-10 col-xs-offset-1 upperProduct">
+   		<div class="productLabel">
+	    	<p>
+	      	<label class="productName"> {{ product.name }} {{product.category}}</label> for 
+	      	<label class="productPrice"> {{ product.price / 100 | currency}}</label>
+	      </p>
+	    </div>
+      <img src="{{ product.imageUrl }}" class='product' height="200" width="200">
+      <h3> Rating: {{ product.rating }} </h3>
+    	<button type="button" class="btn btn-success productsBtn" ng-click="Cart.add(product.id, 1)">Add to Cart</button>		
     </div>
-    <div>
-        <button ng-click="Cart.add(product.id, 1)" class='product'>Add to cart.</button>
+
+    <div class="col-xs-10 col-xs-offset-1 lowerProduct">
+    	<h3>What our users have to say:</h3>
     </div>
+
 </section>
