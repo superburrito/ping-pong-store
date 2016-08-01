@@ -52,6 +52,13 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product,$window)
 		Cart.remove(id);
 		$window.location.reload();
 	}
+
+	//update quantity in cart
+	$scope.quantity = [1,2,3,4,5,6,7,8,9,10]
+	$scope.updateQuantity = function(productId,quantity){
+		Cart.updateQuantity(productId,quantity);
+		$window.location.reload();
+	}
 	
 });
 
