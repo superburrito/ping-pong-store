@@ -1,6 +1,6 @@
 app.controller('ProductsCtrl', function($scope, Products){
 
-    $scope.categories = ['paddles','balls','cases','tables','robots'];
+    $scope.categories = ['Paddles','Balls','Cases','Tables','Robots'];
 
     $scope.categoriesFunc = Products.getProductsbyCategory;
 
