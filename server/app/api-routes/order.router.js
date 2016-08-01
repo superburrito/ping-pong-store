@@ -59,12 +59,14 @@ function findOrderProduct(orders){
 function placeAllProduct(orders){
     var allOrders=[];
     for(var i=0; i<orders.length; i++){
+        var order = [];
         for(var j=0; j<orders[i].length; j++){
             var obj={};
             obj.orderDetail = orders[i][j].dataValues;
             obj.productDetail = orders[i][j].product;
-            allOrders.push(obj);
+            order.push(obj)
         }
+        allOrders.push(order);
     }
     return allOrders;
 }
