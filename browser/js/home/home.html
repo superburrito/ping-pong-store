@@ -37,6 +37,7 @@
                     <label class="filterLabel">Sort Selections By: </label>
                     <select ng-init="selectedCategory.category = categories[0]" ng-model="selectedCategory.category" class="filterBox form-control">
                         <option ng-repeat="cat in categories" value="{{cat}}"> {{ cat }}</option>
+                        <option value="">All Products</option>
                     </select>
                      <select ng-init="selectedOrder = orderOptions[0]" ng-model="selectedOrder" class="filterBox form-control">
                         <option ng-repeat="orderOption in orderOptions" value="{{orderOption}}"> {{ orderOption }}</option>
