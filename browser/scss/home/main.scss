@@ -84,10 +84,11 @@
   .product {
     display: inline-block;
     border-bottom: 1px solid #ddd;
-    padding: 10px;
     text-align: center;
     align-items: center;
     background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .productLabel {
@@ -111,8 +112,8 @@
       margin: auto;
       border: 2px solid #ddd;
       border-radius: 5px;
-	    width:  180px;
-	    height: 180px;
+	    width:  200px;
+	    height: 200px;
     }
     img:hover {
       border: 2px solid #780912;
