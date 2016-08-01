@@ -29,10 +29,10 @@
             <li>
  
               <a ng-show="user.isAdmin" ui-sref-active="active" ui-sref="createProduct">
-                  <span class="glyphicon glyphicon-user"></span>
+                  <span class="glyphicon glyphicon-plus"></span>
                   Create Product
 
-              <a  ui-sref-active="active" ui-sref="signup">
+              <a  ng-show="!isLoggedIn()" ui-sref-active="active" ui-sref="signup">
                   <span class="glyphicon glyphicon-user"></span>
                   Sign Up
 
