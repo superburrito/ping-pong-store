@@ -7,6 +7,7 @@
     	<br>
     	You ordered {{ cartItem.quantity }} of this item.
     	<br>
+        <button ng-click='removeItem(cartItem.product.id)'>Remove Item</button>
     </div>
     <h3>Total Price: $ {{ totalPrice }}</h3>
     <br>

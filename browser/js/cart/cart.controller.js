@@ -1,8 +1,7 @@
-app.controller('CartCtrl', function($scope, $stateParams, Cart, Product){	
+app.controller('CartCtrl', function($scope, $stateParams, Cart, Product,$window){	
 
 	$scope.cartItems = [];
 	$scope.emptyCart = true;
-
 	var cartKeys = Object.keys(Cart.get());
 	var totalPrice = 0;
 	if(cartKeys.length > 0){
@@ -47,6 +46,17 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product){
 		Cart.empty()
 		return Cart.checkout($scope.typedAddress, cartIds);
 	};
+
+	//remove item from cart
+	// $timeout(function(){
+	// 	$scope.removeItem = function(id){
+	// 		Cart.remove(id);
+	// 	}
+	// });
+	$scope.removeItem = function(id){
+		Cart.remove(id);
+		$window.location.reload();
+	}
 	
 });
 
