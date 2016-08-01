@@ -1,8 +1,36 @@
 #product {
-  .productLabel {
+	.upperProduct {
+		background-color: white;
+    text-align: left;
+    padding-bottom: 5px;
+    border-bottom: 5px solid #ddd;
+	}
+	.lowerProduct {
+		background-color: white;
+	}
+
+	.productImage {
+		margin-top: 10px;
+	}
+	.productInfo {
+		margin-top: 10px;
+	}
+
+	.productImage img {
+		height: 200px;
+		width: 200px;
+	}
+
+	.lowerProduct {
+		padding-top: 10px;
+	}
+
+
+  .productInfo label {
     font-size: 20px;
   }
   .productPrice {
-    font-size: 14px;
+    font-size: 20px;
   }
+  
 }
