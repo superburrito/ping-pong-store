@@ -40,7 +40,7 @@
                         <option value="">All Products</option>
                     </select>
                      <select ng-init="selectedOrder = orderOptions[0]" ng-model="selectedOrder" class="filterBox form-control">
-                        <option ng-repeat="orderOption in orderOptions" value="{{orderOption}}"> {{ orderOption }}</option>
+                        <option ng-repeat="orderOption in orderOptions" value="{{orderOption | lowercase }}"> {{ orderOption }}</option>
                     </select>                       
                     <select ng-init="selectedAscDesc = ascDescOptions[0]" ng-model="selectedAscDesc" class="filterBoxLast form-control">
                         <option ng-repeat="order in ascDescOptions" value="{{order}}" ng-click="ascDesc()"> {{ order }}</option>
@@ -77,7 +77,7 @@
                         <img src="{{ product.imageUrl }}">
                     </div>
                     <div class="col-xs-12 col-md-12 col-lg-6 prodDescript">
-                        <h4><label class="productLabel">The {{ product.name }} {{ product.category }}</label></h4>
+                        <h4 class="productLabel">{{ product.name }}<br> {{ product.category }}</h4>
                         <h4>${{ product.price }}</h4>
                         <h4>{{ product.rating }} / 5.0</h4>
                         <br>
@@ -92,19 +92,6 @@
 
     <!-- /.container -->
 
-    <div class="container">
-
-        <hr>
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; King Pong 2016</p>
-                </div>
-            </div>
-        </footer>
-
-    </div>
     <!-- /.container -->
 
     <!-- jQuery -->

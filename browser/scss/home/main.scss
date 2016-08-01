@@ -82,13 +82,19 @@
     display: inline-block;
     border: 1px solid #ddd;
     padding: 5px;
+    padding-bottom: 10px;
     text-align: center;
     align-items: center;
     background-color: white;
   }
 
+
   .btn {
     border-radius: 2px;
+  }
+
+  h4 {
+    margin-top: 5px;
   }
 
   .prodImage {
@@ -98,8 +104,8 @@
       display: block;
       margin: auto;
       border: 2px solid #ddd;
-	    width:  200px;
-	    height: 200px;
+	    width:  180px;
+	    height: 180px;
     }
 	}
 
