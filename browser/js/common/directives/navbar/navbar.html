@@ -5,19 +5,19 @@
         </div>
         <ul class="nav navbar-nav">
             <li>
-              <a ui-sref-active="active" ui-sref="cart"> 
-                  <span class="glyphicon glyphicon-shopping-cart"></span> 
+              <a ui-sref-active="active" ui-sref="cart">
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
                   Cart
               </a>
             </li>
             <li>
-              <a ui-sref-active="active" ui-sref="order">
+              <a ng-hide="item.auth || !isLoggedIn()" ui-sref-active="active" ui-sref="order">
                   <span class="glyphicon glyphicon-tasks"></span>
-                  Orders 
+                  Orders
               </a>
             </li>
             <li>
-              <a ng-show="!item.auth || isLoggedIn()" ui-sref-active="active" ui-sref="account">
+              <a ng-hide="item.auth || !isLoggedIn()" ui-sref-active="active" ui-sref="account">
                   <span class="glyphicon glyphicon-user"></span>
                   Account
               </a>
@@ -30,7 +30,7 @@
         </ul>
         <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
         <div ng-show="user" class="welcome">
-            <span>Welcome to the Jungle,{{ user.firstName  }}.</span>
+            <span>Welcome to the Jungle, {{ user.firstName  }}.</span>
             <a ng-click="logout()">Logout</a>
         </div>
     </div>
