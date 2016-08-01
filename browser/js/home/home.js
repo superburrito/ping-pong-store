@@ -7,7 +7,7 @@ app.config(function ($stateProvider) {
                     'Table','Robot'];
         $scope.selectedCategory = '';
 
-        $scope.orderOptions = ['Price', 'Rating'];
+        $scope.orderOptions = ['price', 'rating'];
         $scope.orderOption = '';
         $scope.finalOrderOption = $scope.ascDesc + $scope.orderOption;
 
