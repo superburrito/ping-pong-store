@@ -1,12 +1,19 @@
 app.factory('Product', function($http){
-	let getOneProduct = function(id){
-    return $http.get('/api/products/'+ id)
+	var ProductFactory = {};
+
+	ProductFactory.getOneProduct = function(productId){
+    return $http.get('/api/products/'+ productId)
     .then(function(product){
 		  return product.data;
 		})
 	};
 
-  return {
-	  getOneProduct: getOneProduct
-  }
+	ProductFactory.getProductReviews = function(productId){
+		return $http.get('/api/products/' + productId + '/reviews')
+		.then(function(response){
+			return response.data
+		})
+	};
+
+  return ProductFactory;
 })

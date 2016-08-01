@@ -4,11 +4,11 @@ app.controller('ProductCtrl', function($scope, Product, $stateParams, Cart){
   .then(function(product){
   	console.log(product)
 		$scope.product = product;
-		product.getReviews()
+		Product.getProductReviews($stateParams.id)
 		.then(function(reviews){
+			console.log("Reviews are: ", reviews);
 			$scope.reviews = reviews;
 		})
 	})
-
 });
 
