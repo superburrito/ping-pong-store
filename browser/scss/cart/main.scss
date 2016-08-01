@@ -1,0 +1,45 @@
+#cart {
+	.cartMain {
+		background-color: white;
+	}
+	.cartBtm {
+		background-color: white;
+		padding-top: 20px;
+		button {
+			margin-bottom: 30px;
+		}
+
+	}
+
+
+	.cartItemPanel .form-control {
+		width: 100px;
+		display: inline-block;
+		margin-right: 5px;
+		height: 35px;
+	}
+
+	.cartLabel {
+		font-weight: bold;
+	}
+	img {
+		height: 180px;
+		width: 180px;
+	}
+
+	.addressForm {
+		padding-top: 30px;
+		.form-control {
+			margin-left: 15px;
+			width: 60%;
+		}
+	}
+
+	.cartItem {
+		padding-top: 10px;
+		padding-bottom: 5px;
+		border-bottom: 1px solid #ddd;
+	}
+
+
+}
