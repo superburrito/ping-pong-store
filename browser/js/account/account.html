@@ -20,7 +20,7 @@
 	          Update address and payment methods
 	    </a>
         <div class="paymentForm" ng-show="updatePaySettings"> <!-- Will add action/method -->
-            <form name="paymentForm" ng-model="account" action="" method="">
+            <form ng-submit="updateInfo()" name="paymentForm" ng-model="account">
                 <b>Payment info</b> 
                 <br></br>
                 First Name:<br>
@@ -44,7 +44,7 @@
                 <br><br>
                 Address:<br>
                 <input type="text" ng-model="account.address"name="address"><br><br>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" ng-click="updateInfo()">
             </form>
 
         </div>
