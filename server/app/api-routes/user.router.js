@@ -17,9 +17,11 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/', function(req, res, next){
-    if(!req.user.isAdmin) return res.sendStatus(403);
+    // if(!req.user.isAdmin) return res.sendStatus(403);
+    console.log("in post route backend: ", req.body)
     return User.create(req.body)
     .then(function(createdUser){
+        console.log("check to see if we created user", createdUser)
         return res.json(createdUser);
     });
 });
