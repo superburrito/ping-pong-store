@@ -1,5 +1,6 @@
-app.controller('ProductCtrl', function($scope, Product, $stateParams, Cart){
+app.controller('ProductCtrl', function($state, $scope, Product, $stateParams, Cart){
   $scope.Cart = Cart;
+
 	Product.getOneProduct($stateParams.id)
   .then(function(product){
   	console.log(product)
@@ -10,5 +11,10 @@ app.controller('ProductCtrl', function($scope, Product, $stateParams, Cart){
 			$scope.reviews = reviews;
 		})
 	})
+
+	$scope.returnToStore = function(){
+		$state.go('home');
+	}
+	
 });
 

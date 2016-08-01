@@ -11,9 +11,11 @@
             <label class="productName"> {{ product.name }} {{product.category}}</label> for 
             <label class="productPrice"> {{ product.price / 100 | currency}}</label>
           </p>
-          <h4> Users rated this product: {{ product.rating }} / 5.0 </h4>
-          <br>
+          <h4 class="userRating"> Users rated this product: {{ product.rating }} / 5.0 </h4>
+          <h4 class="prodDescript1"> Product Description: </h4>
+          <h4 class="prodDescript2"> {{ product.description }} </h4>
         	<button type="button" class="btn btn-success productsBtn" ng-click="Cart.add(product.id, 1)">Add to Cart</button>		
+          <button type="button" class="btn btn-warning productsBtn" ng-click="returnToStore()">Back to Store</button> 
         </div>      
 
       </div>

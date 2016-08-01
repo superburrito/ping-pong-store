@@ -35,7 +35,7 @@
             <div class="form-group">
                 <div class="row">
                     <label class="filterLabel">Sort Selections By: </label>
-                    <select ng-init="selectedCategory.category = categories[0]" ng-model="selectedCategory.category" class="filterBox form-control">
+                    <select ng-init="selectedCategory.category = ''" ng-model="selectedCategory.category" class="filterBox form-control">
                         <option ng-repeat="cat in categories" value="{{cat}}"> {{ cat }}</option>
                         <option value="">All Products</option>
                     </select>
