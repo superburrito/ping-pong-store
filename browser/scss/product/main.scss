@@ -21,6 +21,11 @@
 		width: 200px;
 	}
 
+	.userRating {
+		color: #780912;
+		font-weight: bold;
+	}
+
 	.lowerProduct {
 		padding-top: 10px;
 	}
@@ -29,6 +34,15 @@
 		padding-bottom: 5px;
 		border-bottom: 1px solid #ddd;
 		margin-bottom: 5px;
+	}
+
+	.prodDescript1 {
+		padding-top: 5px;
+		margin-bottom: 1px;
+	}
+
+	.prodDescript2 {
+		margin-top: 2px;
 	}
 
   .productInfo label {
