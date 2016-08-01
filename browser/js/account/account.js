@@ -21,7 +21,9 @@ app.config(function ($stateProvider) {
 
             $scope.showPaySettings = false;
 
-
+            $scope.updateInfo = function () {
+                Account.updateInfo($scope.account);
+            }
         },
         // The following data.authenticate is read by an event listener
         // that controls access to this state. Refer to app.js.
@@ -33,20 +35,20 @@ app.factory('Account', function ($http) {
 
     var getAccountInfo = function () {
         return $http.get('/api/account').then(function (Account) {
-            console.log("Hey what's up", Account.data);
             return Account.data;
         });
     };
 
-    var updateInfo = function(){
-        return $http.put('/api/account', $scope.account).then(function(Account){
+    var updateInfo = function(accountObj){
+        return $http.put('/api/account', accountObj).then(function(Account){
             console.log("Updating account info!");
-            return Account.data
+            return Account.data;
         })
     }
 
     return {
-        getAccountInfo: getAccountInfo
+        getAccountInfo: getAccountInfo,
+        updateInfo: updateInfo
     };
 
 });
