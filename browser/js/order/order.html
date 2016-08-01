@@ -1,16 +1,19 @@
 <section id="order">
     <h1>Your Order history</h1>
-    <div ng-repeat="order in orders">
-    	<img src="{{ order.productDetail.imageUrl }}" height=80 ><br>
-    	You have bought {{ order.productDetail.name }}
-    	<br>
-    	price {{ order.productDetail.price }}
-    	<br>
-    	 at {{ order.orderDetail.createdAt }}
-    	<br>
-    	You ordered {{ order.orderDetail.quantity }} of this item.
-    	<br>
-        <a ui-sref="newReview({productId: {{ order.productDetail.id }} })">Write a review here</a>
+
+    <div ng-repeat="order in orders" >
+        <div ng-repeat ='product in order'>
+        	<img ng-src="{{ product.productDetail.imageUrl }}" height=80 ><br>
+        	You have bought {{ product.productDetail.name }}
+        	<br>
+        	price {{ product.productDetail.price }}
+        	<br>
+        	 at {{ product.orderDetail.createdAt }}
+        	<br>
+        	You ordered {{ product.orderDetail.quantity }} of this item.
+        	<br>
+            <a ui-sref="newReview({productId: {{ product.productDetail.id }} })">Write a review here</a>
+        </div>
     </div>
 
     <br>

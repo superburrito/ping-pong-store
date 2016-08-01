@@ -16,7 +16,7 @@ describe('Product model', function () {
         return Product.create({
             price: 2000,
             name: "Nimbus 2000",
-            category: "paddle",
+            category: "Paddle",
             size: null,
             quality: null,
             brand: "Yonex",
@@ -38,13 +38,6 @@ describe('Product model', function () {
         describe('name attribute', function () {
             it('should exist', function () {
                 expect(newProduct.name).to.exist;
-            })
-        });
-        describe('category attribute', function () {
-            it('should exist', function () {
-                var categories = ["paddle", "ball", "case", 
-                                  "shoe", "table", "robot"]
-                expect(categories.indexOf(newProduct.category)).to.not.equal(-1);
             })
         });
         describe('brand attribute', function () {

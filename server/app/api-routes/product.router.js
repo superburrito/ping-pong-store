@@ -145,7 +145,20 @@ router.get('/:productId/reviews', function(req, res, next){
         }
     })
     .then(function(reviews){
-        return res.json(reviews);
+        // Adds author to review
+        return Promise.map(reviews, function(review){
+            return review.getUser().then(function(user){
+                review.lastName = user.lastName;
+                review.firstName = user.firstName;
+                console.log("review updated to: ", review);
+            })
+            .then(function (){
+                return review;
+            });
+        });
+    })
+    .then(function(reviewsUpdated){
+        return res.json(reviewsUpdated);
     })
     .catch(next);
 });
@@ -161,7 +174,7 @@ router.get('/:productId/carts', function(req, res, next){
         return product.getOrders();
     })
     .then(function(orders){
-        return orders.filter( function(order) {
+        return orders.filter(function(order) {
             order.status === 0;
         });
     })

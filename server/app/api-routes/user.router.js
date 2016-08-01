@@ -26,6 +26,7 @@ router.post('/', function(req, res, next){
     });
 });
 
+
 router.get('/:userId', function(req, res, next){
 	if(!req.user.isAdmin && req.user.id != req.params.userId) return res.sendStatus(401);
 	return User.findOne({

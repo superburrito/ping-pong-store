@@ -16,6 +16,14 @@ module.exports = db.define('review', {
     },
     feedback: {
         type: Sequelize.TEXT
+    },
+    firstName: {
+        type: Sequelize.STRING,
+        defaultValue: ''
+    },
+    lastName: {
+        type: Sequelize.STRING,
+        defaultValue: ''
     }
 // }, {
 //     classMethods: {

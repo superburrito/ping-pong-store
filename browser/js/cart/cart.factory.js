@@ -39,5 +39,9 @@ app.factory('Cart', function ($state, $http, Product) {
       })
     }
 
+    CartFactory.updateQuantity = function(productId,quantity){
+      localStorage.setItem(productId,quantity);
+    }
+
     return CartFactory;
 });

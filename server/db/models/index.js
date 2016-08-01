@@ -8,21 +8,25 @@ var Review = require('./review.model.js');
 var Orderproduct = require('./orderproduct.model.js');
 
 //Relationships
-// Many-to-one, Users to Orders
+// Many Orders to One User
 User.hasMany(Order);
 Order.belongsTo(User);
 
-// Many-to-one, Orders to Orderproducts
+// Many Orderproducts to One Order
 Order.hasMany(Orderproduct);
 Orderproduct.belongsTo(Order);
 
-// Many-to-one, Products to Orderproducts
+// Many Orderproducts to One Product
 Product.hasMany(Orderproduct);
 Orderproduct.belongsTo(Product);
 
-// Many-to-many, Products to Reviews, Users to Reviews
+// Many Reviews to One Product 
 Product.hasMany(Review);
+Review.belongsTo(Product);
+
+// Many Reviews to One User 
 User.hasMany(Review);
+Review.belongsTo(User);
 
 
 module.exports = {
