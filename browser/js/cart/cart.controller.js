@@ -48,11 +48,6 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product,$window)
 	};
 
 	//remove item from cart
-	// $timeout(function(){
-	// 	$scope.removeItem = function(id){
-	// 		Cart.remove(id);
-	// 	}
-	// });
 	$scope.removeItem = function(id){
 		Cart.remove(id);
 		$window.location.reload();
