@@ -2,7 +2,7 @@ app.config(function ($stateProvider) {
     $stateProvider.state('home', {
       url: '/',
       templateUrl: 'js/home/home.html',
-   		controller: function($scope, homepage){
+   		controller: function($scope, Home, Cart){
         $scope.categories = ['Paddle','Ball','Case',
                     'Table','Robot'];
         $scope.selectedCategory = '';
@@ -20,15 +20,16 @@ app.config(function ($stateProvider) {
           else return true;
         }
 
+        $scope.Cart = Cart;
 
-   			homepage.getAllProducts().then(function(allProducts){
+   			Home.getAllProducts().then(function(allProducts){
    				$scope.products = allProducts
    			})
    		} 
     });
 });
 
-app.factory('homepage', function($http){
+app.factory('Home', function($http){
     var getAllProducts = function(){
         return $http.get('/api/products').then(function(products){
             return products.data;
