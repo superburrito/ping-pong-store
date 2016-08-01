@@ -7,6 +7,9 @@
     	<br>
     	You ordered {{ cartItem.quantity }} of this item.
     	<br>
+        <select ng-model='data.quantityVal' ng-options='number for number in quantity'></select>
+        <button ng-click='updateQuantity(cartItem.product.id,data.quantityVal)'>Update Quantity</button>
+        <br>
         <button ng-click='removeItem(cartItem.product.id)'>Remove Item</button>
     </div>
     <h3>Total Price: $ {{ totalPrice }}</h3>
