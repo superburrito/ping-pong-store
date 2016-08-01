@@ -6,9 +6,8 @@ app.config(function ($stateProvider) {
         $scope.categories = ['Paddle','Ball','Case',
                     'Table','Robot'];
         $scope.selectedCategory = '';
-        $scope.orderOptions = ['price', 'rating'];
+        $scope.orderOptions = ['Price', 'Rating'];
         $scope.orderOption = '';
-        $scope.finalOrderOption = $scope.ascDesc + $scope.orderOption;
 
         $scope.ascDescOptions = ['Ascending', 'Descending']
         $scope.selectedAscDesc = 'Descending';
