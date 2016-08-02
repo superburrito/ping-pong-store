@@ -25,7 +25,7 @@
 <body>
     <section id="home">
     <div class="row">
-        <div class="col-xs-10 col-xs-offset-1 upperHome">
+        <div class="col-xs-10 col-xs-offset-1 upperHome">   
             <img src="../media/king-pong-header.png">
         </div>
     </div>
@@ -35,7 +35,7 @@
             <div class="form-group">
                 <div class="row">
                     <label class="filterLabel">Sort Selections By: </label>
-                    <select ng-init="selectedCategory.category = ''" ng-model="selectedCategory.category" class="filterBox form-control">
+                    <select ng-init="selectedCategory.category = ''" ng-model="selectedCategory.category" class="filterBox">
                         <option ng-repeat="cat in categories" value="{{cat}}"> {{ cat }}</option>
                         <option value="">All Products</option>
                     </select>

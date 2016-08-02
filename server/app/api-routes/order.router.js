@@ -31,6 +31,7 @@ router.get('/', function(req, res, next){
             where: req.query
         })
         .then(function(orders){
+            arr = orders;
             return findOrderProduct(orders);
         })
         .then(function(orders){           
