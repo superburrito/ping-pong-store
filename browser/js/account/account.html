@@ -1,59 +1,62 @@
-<section id="members-area">
-    <h3> Welcome, {{account.firstName}}!
-    </h3>
-    	<p>Review and update your acccount settings here:</p>
+<section id="account">
+    <div class="col-xs-10 col-xs-offset-1 accountMain">
+      
+        <h3> Welcome, {{account.firstName}}!
+        </h3>
+        	<h4>Review and update your acccount settings here:</h4>
 
-    <div>
-        <a ng-click="showSettings()">
-              <span class="glyphicon glyphicon glyphicon-tag"></span>
-              View current address and payment methods
-        </a>
-        <div class="currentPaymentinfo" ng-show="showPaySettings">
-            <b>Current address and payment info</b>
-            <br></br>
-            Address: {{account.address}}
+        <div>
+            <button ng-click="showSettings()" class="btn btn-primary">
+                  <span class="glyphicon glyphicon glyphicon-tag"></span>
+                  View current address and payment methods
+            </button>
+            <div class="currentPaymentinfo" ng-show="showPaySettings">
+                <h3>Current address and payment info:</h3><br>
+                <h5>Address: {{account.address}}</h5>
+            </div>
+        </div>    
+        <div>
+    	    <button ng-click="updateSettings()" class="btn btn-warning">
+    	          <span class="glyphicon glyphicon glyphicon-cog"></span>
+    	          Update address and payment methods
+    	    </button>
+            <div class="paymentForm" ng-show="updatePaySettings"> <!-- Will add action/method -->
+                <form ng-submit="updateInfo()" name="paymentForm" ng-model="account">
+                    <h3>Payment info:</h3> 
+                    <b>First Name:</b><br>
+                    <input type="text" name="firstName"></br>
+                    <b>Last Name:</b><br>
+                    <input type="text" name="lastName"><br><br>
+                    <b>Card Type:</b><br>
+                    <form>
+                        <input type="radio" name="Visa" value="Visa" checked> Visa<br>
+                        <input type="radio" name="Mastercard" value="MasterCard"> MasterCard<br>
+                        <input type="radio" name="Amex" value="Amex"> American Express
+                    </form></br>
+
+                    <b>Card Number:</b><br>
+                     <input type="text" name="cardNumber"><br>
+                     <br>
+                    <b>Expiration Date:</b><br>
+                     <input type="month" name="expDate"><br>
+                     <br>
+                    <b>Billing Address</b> 
+                    <br><br>
+                    <b>Address:</b><br>
+                    <input type="text" ng-model="account.address"name="address"><br><br>
+                    <input type="submit" value="Submit" ng-click="updateInfo()" class="btn btn-warning">
+                </form>
+
+            </div>
         </div>
-    </div>    
-    <div>
-	    <a ng-click="updateSettings()">
-	          <span class="glyphicon glyphicon glyphicon-cog"></span>
-	          Update address and payment methods
-	    </a>
-        <div class="paymentForm" ng-show="updatePaySettings"> <!-- Will add action/method -->
-            <form ng-submit="updateInfo()" name="paymentForm" ng-model="account">
-                <b>Payment info</b> 
-                <br></br>
-                First Name:<br>
-                <input type="text" name="firstName"></br>
-                Last Name: <br>
-                <input type="text" name="lastName"><br><br>
-                Card Type:<br>
-                <form>
-                    <input type="radio" name="Visa" value="Visa" checked> Visa<br>
-                    <input type="radio" name="Mastercard" value="MasterCard"> MasterCard<br>
-                    <input type="radio" name="Amex" value="Amex"> American Express
-                </form></br>
-
-                Card Number:<br>
-                 <input type="text" name="cardNumber"><br>
-                 <br>
-                Expiration Date:<br>
-                 <input type="month" name="expDate"><br>
-                 <br>
-                <b>Billing Address</b> 
-                <br><br>
-                Address:<br>
-                <input type="text" ng-model="account.address"name="address"><br><br>
-                <input type="submit" value="Submit" ng-click="updateInfo()">
-            </form>
-
+        <div> 
+        	<button ui-sref-active="active" ui-sref="account" class="btn btn-primary">
+         	 <span class="glyphicon glyphicon glyphicon-list-alt"></span>
+             View wishlist 
+        	</button>
         </div>
     </div>
-    <div> 
-    	<a ui-sref-active="active" ui-sref="account">
-     	 <span class="glyphicon glyphicon glyphicon-list-alt"></span>
-         View wishlist 
-    	</a>
+    <div class="col-xs-10 col-xs-offset-1 accountBtm">
     </div>
 
 </section>
