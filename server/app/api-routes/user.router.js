@@ -26,6 +26,17 @@ router.post('/', function(req, res, next){
     });
 });
 
+router.get('/checkIsAdmin/:email', function(req,res,next){
+    User.findOne({
+        where:{
+            email: req.params.email
+        }
+    })
+    .then(function(user){
+        return res.json(user);
+    })
+})
+
 
 router.get('/:userId', function(req, res, next){
 	if(!req.user.isAdmin && req.user.id != req.params.userId) return res.sendStatus(401);

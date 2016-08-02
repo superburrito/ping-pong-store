@@ -8,14 +8,33 @@
 
         <div class="col-xs-12 col-md-9 productInfo">
           <p>
-            <label class="productName"> {{ product.name }} {{product.category}}</label> for 
-            <label class="productPrice"> {{ product.price / 100 | currency}}</label>
+            <form name='editProduct' ng-model='product' ng-submit='edit()'>
+            <label class="productName">
+              <input type='text' value='{{ product.name }}' ng-readonly=!checkIsAdmin() ng-model='product.name'> 
+            </label>
+            <label class='productCategory'>
+              {{product.category}}
+
+              <select ng-model='product.category' ng-show='checkIsAdmin()'>
+                    <option value='Paddle'>paddle</option>
+                    <option value='Ball'>Ball</option>
+                    <option value='Case'>Case</option>
+                    <option value='Table'>Table</option>
+                    <option value='Robot'>Robot</option>
+              </select>
+            </label> for 
+
+            <label class="productPrice"> 
+              <input type='text' value='{{ product.price / 100 | currency}}' ng-readonly=!checkIsAdmin() ng-model='product.price'></label>
           </p>
           <h4 class="userRating"> Users rated this product: {{ product.rating }} / 5.0 </h4>
           <h4 class="prodDescript1"> Product Description: </h4>
-          <h4 class="prodDescript2"> {{ product.description }} </h4>
+          <h4 class="prodDescript2"> 
+          <input type='text' value='{{ product.description }}' ng-readonly=!checkIsAdmin() ng-model='product.description'>  </h4>
         	<button type="button" class="btn btn-success productsBtn" ng-click="Cart.add(product.id, 1)">Add to Cart</button>		
-          <button type="button" class="btn btn-warning productsBtn" ng-click="returnToStore()">Back to Store</button> 
+          <button type="button" class="btn btn-warning productsBtn" ng-click="returnToStore()">Back to Store</button>
+          <button type="submit" class="btn btn-warning productsBtn" ng-show='checkIsAdmin()'>Edit</button>
+          </form>  
         </div>      
 
       </div>
