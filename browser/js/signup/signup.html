@@ -1,15 +1,28 @@
+<section id="signup">
+  <div class="col-5-6">
+  <form id="signUpForm" ng-model='newUser' class="signUpForm" ng-submit='sendSignUp()'>
+  First Name:<br>
+                  <input type="text" ng-model="newUser.firstName"></br>
+                  Last Name: <br>
+                  <input type="text" ng-model="newUser.lastName"><br>
+                  Email: <br>
+                  <input type="text" ng-model="newUser.email"><br>
+                  Password: <br>
+                  <input type="password" ng-model="newUser.password"><br>
+                  Address: <br>
+                  <input type="text" ng-model="newUser.address"><br>
+                  <br>
+   				<input type="submit" value="Submit">
+  </form>
 
-<form ng-model='newUser' name ="signUpForm" ng-submit='sendSignUp()'>
-First Name:<br>
-                <input type="text" ng-model="newUser.firstName"></br>
-                Last Name: <br>
-                <input type="text" ng-model="newUser.lastName"><br>
-                Email: <br>
-                <input type="text" ng-model="newUser.email"><br>
-                Password: <br>
-                <input type="password" ng-model="newUser.password"><br>
-                Address: <br>
-                <input type="text" ng-model="newUser.address"><br>
-                <br>
- 				<input type="submit" value="Submit">
-</form>
+    <div class="or buffer">
+      <div class="back-line"><span class="orText"><br><b>  OR  </b></span></div>
+    </div>
+    <div class="buffer oauth">
+      <p class="oauthLink"><oauth-button provider-name="Google"></oauth-button></p>
+      <p class="oauthLink"><oauth-button provider-name="Twitter"></oauth-button></p>
+      <p class="oauthLink"><oauth-button provider-name="Facebook"></oauth-button></p>
+    </div>
+  </div>
+  </div>
+</section>
