@@ -1,5 +1,6 @@
 'use strict';
 var router = require('express').Router();
+var stripe = require('stripe');
 module.exports = router;
 
 var models = require("../../db/models");
@@ -12,6 +13,7 @@ router.use('/products', require('./product.router.js'));
 router.use('/users', require('./user.router.js'));
 router.use('/reviews', require('./review.router.js'));
 router.use('/orders', require('./order.router.js'));
+router.use('/charge', require('./charge.router.js'));
 
 router.use('/account', function(req, res, next){
     res.redirect('/api/users/' + req.user.id);
