@@ -10,6 +10,7 @@ var Promise = require('bluebird');
 
 
 router.get('/', function(req, res, next){
+    var arr =[];
     if(!req.user.isAdmin) {
         Order.findAll({
             where:{
@@ -17,10 +18,11 @@ router.get('/', function(req, res, next){
             }
         })
         .then(function(orders){
+            arr = orders;
             return findOrderProduct(orders);
         })
         .then(function(orders){
-            return res.json(placeAllProduct(orders));
+            return res.json(placeAllProduct(orders,arr));
         })
         
     }
@@ -32,7 +34,7 @@ router.get('/', function(req, res, next){
             return findOrderProduct(orders);
         })
         .then(function(orders){           
-            return res.json(placeAllProduct(orders));
+            return res.json(placeAllProduct(orders,arr));
         })
     }
 });
@@ -56,16 +58,19 @@ function findOrderProduct(orders){
     }))
 }
 
-function placeAllProduct(orders){
+function placeAllProduct(orders,arr){
     var allOrders=[];
     for(var i=0; i<orders.length; i++){
-        var order = [];
+        var order = {};
+        var products = [];
+        order.orderDetail=arr[i];
         for(var j=0; j<orders[i].length; j++){
-            var obj={};
-            obj.orderDetail = orders[i][j].dataValues;
-            obj.productDetail = orders[i][j].product;
-            order.push(obj)
+            var product = {};
+            product.orderDetail = orders[i][j].dataValues;
+            product.productDetail = orders[i][j].product;
+            products.push(product);
         }
+        order.products = products;
         allOrders.push(order);
     }
     return allOrders;
