@@ -1,4 +1,42 @@
-#login-form {
-  width: 60%;
-  margin: 0 auto;
+#login {
+
+	h1,h3{
+		color: orange;
+	}
+	#login-form {
+		width: 60%;
+  	margin: 0 auto;
+	}
+  	.loginBtm {
+  		height: 300px;
+  	}
+  	.loginTop {
+  		height: 200px;
+  	}
+
+  	.form {
+  		border: 1px solid #ddd;
+  		margin-left: auto;
+    	margin-right: auto;
+    	height: 300px;
+    	width:400px;
+  	}
+
+  	input[type='text']{
+  		width:250px;
+  	}
+
+  	input[type='password']{
+  		width:250px;
+  	}
+
+  	.background {
+  		background: url(http://www.pixelstalk.net/wp-content/uploads/2016/06/Jungle-HD-Wallpapers.jpg) no-repeat center center fixed;
+  		-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 1200px;
+  	}
+
 }
