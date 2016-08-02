@@ -1,0 +1,18 @@
+<section id="userPage">
+    <h1>All User</h1>
+
+    <div ng-repeat="user in users" >
+        <h3>User</h3>
+    	First Name: {{ user.firstName }}
+    	<br>
+    	Last Name: {{ user.lastName }}
+    	<br>
+    	Email: {{ user.email }}
+    	<br>
+    	Address: {{ user.address }}
+    	<br>
+        <button ng-click='removeUser(user.id)'>Remove User</button>
+    </div>
+
+    <br>
+</section>
