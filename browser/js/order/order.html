@@ -5,29 +5,27 @@
 
 
     <div class="order" ng-repeat="order in orders" >
-        <h4> Order Time: {{ order.orderDetail.createdAt }} </h4><br>
-        <h4> Ship to: {{ order.orderDetail.address }} </h4><br>
+        <h4> Order Time: {{ order.orderDetail.createdAt }} </h4>
+        <h4> Ship to: {{ order.orderDetail.address }} </h4>
+        <h4> Status: {{ order.orderDetail.status}} </h4>
         
-        <div class="orderProduct row " ng-repeat ='product in order.product'>
+        <div class="orderProduct row " ng-repeat ='product in order.products'>
         	<div class="col-xs-12 col-md-3">
               <img ng-src="{{ product.productDetail.imageUrl }}" height=80 >
             </div>
             <div class="col-xs-12 col-md-9">
             	You have bought {{ product.productDetail.name }}
             	<br>
-            	price {{ product.productDetail.price }}
+            	at price ${{ product.productDetail.price }}
             	<br>
             	You ordered {{ product.orderDetail.quantity }} of this item.
             	<br>
-                <button type="button" class="btn btn-primary" ui-sref="newReview({productId: {{ product.productDetail.id }} })">Review this item</button>
-                <button type="button" class="btn btn-primary" ui-sref="newReview({productId: {{ product.productDetail.id }} })" ng-show='checkAdmin()'>Edit</button>
-                <div class="row orderFooter">
-                    <div class="col-xs-12 col-md-offset-3 col-md-9">
-                        <h6> Status: {{ order.orderDetail.status}} </h6><br>
-                    </div>
-                </div>
+                <button type="button" class="btn btn-primary" ui-sref="newReview({productId: {{ product.productDetail.id }} })" ng-hide='checkAdmin()'>Review this item</button>
+                <button type="button" class="btn btn-warning" ui-sref="newReview({productId: {{ product.productDetail.id }} })" ng-show='checkAdmin()'>Edit</button>      
             </div>
         </div>
     </div>
+   </div>
+   <div class="col-xs-10 col-xs-offset-1 orderBtm">
    </div>
 </section>
