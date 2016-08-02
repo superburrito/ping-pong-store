@@ -3,7 +3,7 @@
 }
 
 body {
-  background: #780912;
+  background-color: #780912;
 }
 
 @mixin clearfix {
@@ -26,4 +26,8 @@ body {
 @import 'login/main';
 @import 'product/main';
 @import 'cart/main';
+@import 'order/main';
+@import 'review/main';
+
+
 
