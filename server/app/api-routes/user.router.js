@@ -9,7 +9,6 @@ var router = require('express').Router();
 router.get('/', function(req, res, next){
     if(!req.user.isAdmin) return res.sendStatus(403);
 	else{
-        console.log('in router')
         return User.findAll({
             where: req.query
         })
@@ -53,6 +52,21 @@ router.get('/:userId', function(req, res, next){
 	})
 	.catch(next);
 });
+
+router.put('/admin/:userId', function(req,res,next){
+    if(!req.user.isAdmin) return res.sendStatus(401);
+    else{
+        return User.findById(req.params.userId)
+        .then(function(user){
+            return user.update({
+                        isAdmin:!user.isAdmin
+                    })
+                    .then(function(newUser){
+                        return res.json(newUser);
+                    })
+        })
+    } 
+})
 
 router.put('/:userId', function(req, res, next){
     if(!req.user.isAdmin && req.user.id != req.params.userId) return res.sendStatus(403);

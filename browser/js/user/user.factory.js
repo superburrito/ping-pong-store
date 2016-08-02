@@ -16,5 +16,12 @@ app.factory('User',function($state,$http){
 			return res.data;
 		});
 	};
+
+	UserFactory.updateUser = function(id){
+		return $http.put('/api/users/admin/'+id)
+		.then(function(res){
+			return res.data;
+		});
+	};
 	return UserFactory;
 })
