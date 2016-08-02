@@ -2,7 +2,9 @@ app.config(function ($stateProvider) {
     $stateProvider.state('home', {
       url: '/',
       templateUrl: 'js/home/home.html',
-   		controller: function($scope, Home, Cart,AuthService){
+   		controller: function($scope, Home, Cart){
+
+
         $scope.categories = ['Paddle','Ball','Case',
                     'Table','Robot'];
         $scope.selectedCategory = '';

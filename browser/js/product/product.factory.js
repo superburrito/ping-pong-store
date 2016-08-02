@@ -15,5 +15,12 @@ app.factory('Product', function($http){
 		})
 	};
 
+	ProductFactory.editProduct = function(product){
+		return $http.put('/api/products/' +product.id, product)
+		.then(function(response){
+			return response.date;
+		})
+	}
+
   return ProductFactory;
 })

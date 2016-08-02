@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('LoginCtrl', function ($scope, AuthService, $state) {
+app.controller('LoginCtrl', function ($scope, AuthService, $state, Login) {
 
     $scope.login = {};
     $scope.error = null;
@@ -17,12 +17,28 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
 
         $scope.error = null;
 
-        AuthService.login(loginInfo).then(function () {
+        Login.checkIsAdmin(loginInfo.email)
+        .then(function(user){
+            loginInfo.isAdmin = user.data.isAdmin;
+            AuthService.login(loginInfo).then(function () {
             $state.go('home');
         }).catch(function () {
             $scope.error = 'Invalid login credentials.';
         });
+        })
+        
+
+        
 
     };
 
 });
+
+app.factory('Login', function($http){
+    var LoginFactory = {};
+    LoginFactory.checkIsAdmin = function(email){
+        return $http.get('/api/users/checkIsAdmin/' +email)
+    }
+    
+    return LoginFactory;
+})
