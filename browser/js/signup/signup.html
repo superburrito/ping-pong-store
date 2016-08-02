@@ -1,24 +1,24 @@
 <section id="signup">
-  <div class="col-5-6">
+  <div class="col-xs-10 col-xs-offset-1-main">
   <form id="signUpForm" ng-model='newUser' class="signUpForm" ng-submit='sendSignUp()'>
-  First Name:<br>
+  <b>First Name:</b><br>
                   <input type="text" ng-model="newUser.firstName"></br>
-                  Last Name: <br>
+                  <b>Last Name: </b><br>
                   <input type="text" ng-model="newUser.lastName"><br>
-                  Email: <br>
+                  <b>Email: </b><br>
                   <input type="text" ng-model="newUser.email"><br>
-                  Password: <br>
+                  <b>Password: </b><br>
                   <input type="password" ng-model="newUser.password"><br>
-                  Address: <br>
+                  <b>Address: </b><br>
                   <input type="text" ng-model="newUser.address"><br>
                   <br>
    				<input type="submit" value="Submit">
   </form>
 
     <div class="or buffer">
-      <div class="back-line"><span class="orText"><br><b>  OR  </b></span></div>
+      <div class="back-line"><span class="orText"><br><b></b></span></div>
     </div>
-    <div class="buffer oauth">
+    <div class="bufferOauth">
       <p class="oauthLink"><oauth-button provider-name="Google"></oauth-button></p>
       <p class="oauthLink"><oauth-button provider-name="Twitter"></oauth-button></p>
       <p class="oauthLink"><oauth-button provider-name="Facebook"></oauth-button></p>
