@@ -11,6 +11,17 @@
     text-align: center;
   }
 
+  .col-xs-10 {
+    background-color: white;
+    padding: 0;
+  }
+
+  .footer {
+    background-color: white;
+    display: table-row;
+    height: 100%;
+  }
+
   .upperHome {
   	margin-bottom: 0px;
     margin-top: 0px;
@@ -66,6 +77,7 @@
   }
 
   .filterBox {
+    border-radius: 0;
     display: inline-block;
     width: 150px;
     margin-right: 10px;
@@ -75,6 +87,7 @@
     display: inline-block;
     width: 150px;
     margin-right: 20px;
+    border-radius: 0;
   }
 
   .lowerHome {
@@ -83,12 +96,11 @@
 
   .product {
     display: inline-block;
-    border-bottom: 1px solid #ddd;
     text-align: center;
     align-items: center;
     background-color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 
   .productLabel {
@@ -111,7 +123,6 @@
       display: block;
       margin: auto;
       border: 2px solid #ddd;
-      border-radius: 5px;
 	    width:  200px;
 	    height: 200px;
     }
@@ -121,6 +132,9 @@
     }
 	}
 
+  .btn {
+    border-radius: 0px;
+  }
 
 
   .productsBtn {

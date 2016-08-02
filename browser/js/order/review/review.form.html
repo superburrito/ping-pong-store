@@ -1,14 +1,20 @@
-<form class='review' ng-submit='createReview()'>
-    Title:  <input type='text' name='title' ng-model="newReview.title" required></br>
-    Score:  <select ng-model="newReview.score" required>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            </br>
-    Feedback: <input type='text' name='feedback' ng-model="newReview.feedback" required>
-    <button type="submit" ng-disabled="playlistForm.$invalid">Create Review</button>
-</form>
+<section id='review'>
+  <form class='reviewForm col-xs-10 col-xs-offset-1' ng-submit='createReview()'>
+      <br>
+      Title:  <input type='text' name='title' ng-model="newReview.title" required>
+      <br>
+      <br>
+      Score:  <select class="form-control" ng-model="newReview.score" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+      <br>
+      <br>
+      Feedback: <input type='text' name='feedback' ng-model="newReview.feedback" required>
+      <button type="submit" ng-disabled="playlistForm.$invalid">Create Review</button>
+  </form>
+</section>
