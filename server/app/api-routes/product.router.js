@@ -46,6 +46,7 @@ router.get('/', function(req, res, next){
                     average+=review.score;
                 })
                 average/=reviews.length;
+                average = Math.round(average*10)/10;
                 product.setRating(average);
                 return product;
             })
@@ -79,6 +80,7 @@ router.get('/:productId', function(req, res, next){
                 average+=review.score;
             })
             average/=reviews.length;
+            average = Math.round(average*10)/10;   
             product.setRating(average);
         })
         .then(function(){
