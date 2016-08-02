@@ -11,6 +11,17 @@
     text-align: center;
   }
 
+  .col-xs-10 {
+    background-color: white;
+    padding: 0;
+  }
+
+  .footer {
+    background-color: white;
+    display: table-row;
+    height: 100%;
+  }
+
   .upperHome {
   	margin-bottom: 0px;
     margin-top: 0px;
@@ -49,6 +60,9 @@
   }
 */
 
+  .productRating {
+    font-weight: bold;
+  }
 
   select {
     font-size: 18px;
@@ -63,15 +77,17 @@
   }
 
   .filterBox {
+    border-radius: 0;
     display: inline-block;
-    width: 10%;
+    width: 150px;
     margin-right: 10px;
   }
 
   .filterBoxLast {
     display: inline-block;
-    width: 10%;
+    width: 150px;
     margin-right: 20px;
+    border-radius: 0;
   }
 
   .lowerHome {
@@ -80,14 +96,17 @@
 
   .product {
     display: inline-block;
-    border: 1px solid #ddd;
-    padding: 5px;
-    padding-bottom: 10px;
     text-align: center;
     align-items: center;
     background-color: white;
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 
+  .productLabel {
+    color: #780912;
+    font-weight: bold;
+  }
 
   .btn {
     border-radius: 2px;
@@ -104,10 +123,18 @@
       display: block;
       margin: auto;
       border: 2px solid #ddd;
-	    width:  180px;
-	    height: 180px;
+	    width:  200px;
+	    height: 200px;
+    }
+    img:hover {
+      border: 2px solid #780912;
+      cursor: pointer;
     }
 	}
+
+  .btn {
+    border-radius: 0px;
+  }
 
 
   .productsBtn {

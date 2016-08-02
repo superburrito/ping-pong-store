@@ -1,0 +1,23 @@
+#review {
+	.reviewForm {
+		background-color: white;
+		height: 1000px;
+		font-size: 16px;
+		font-weight: bold;
+		.dropdownScore {
+			width: 100px;
+		}
+	}
+	.reviewTitle {
+		display: block;
+		width: 400px;
+	}	
+	select {
+		display: block;
+		width: 100px;
+	}
+
+	.feedback {
+		width: 600px;
+	}
+}
