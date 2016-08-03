@@ -2,10 +2,10 @@
 var models = require("../../db/models");
 var Product = models.Product;
 var User = models.User;
-var Review = models.Review;
 var router = require('express').Router();
 var Order = models.Order;
 var Orderproduct = models.Orderproduct;
+var nodemailer = require('nodemailer');
 var Promise = require('bluebird');
 
 
@@ -76,6 +76,34 @@ function placeAllProduct(orders,arr){
     }
     return allOrders;
 }
+
+router.get('/confirmation/:email', function(req,res,next){
+    console.log('in router')
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'kingpong123321@gmail.com', // Your email id
+            pass: 'kingpong123' // Your password
+        }
+    });
+    var mailOptions = {
+        from: '"KING KING 👥" <kingkong@kingpong.com>', // sender address
+        to: req.params.email, // list of receivers
+        subject: 'Comfirmation email', // Subject line
+        text: 'You have order ', // plaintext body
+        html: '<h1>You have made an order on KingPong.com</h1><br><button>confirm</button>' // html body
+    };
+    return transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            return console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);
+            return res.json(info.response)
+        }
+        
+    });
+    
+})
 
 router.post('/checkout/:address', function(req,res,next){
     var orderProm = Order.create({

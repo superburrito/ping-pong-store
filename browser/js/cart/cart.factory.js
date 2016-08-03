@@ -43,5 +43,9 @@ app.factory('Cart', function ($state, $http, Product) {
       localStorage.setItem(productId,quantity);
     }
 
+    CartFactory.sendEmail = function(email){
+      return $http.get('/api/orders/confirmation/'+email);
+    }
+
     return CartFactory;
 });
