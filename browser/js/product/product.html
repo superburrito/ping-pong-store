@@ -10,13 +10,14 @@
           <p>
             <form name='editProduct' ng-model='product' ng-submit='edit()'>
             <label class="productName">
-              <input type='text' value='{{ product.name }}' ng-readonly=!checkIsAdmin() ng-model='product.name'> 
+              <div ng-hide='checkIsAdmin()'>{{ product.name }}</div>
+              <input type='text' value='{{ product.name }}' ng-show=checkIsAdmin() ng-model='product.name'> 
             </label>
             <label class='productCategory'>
-              {{product.category}}
+              <div ng-hide='checkIsAdmin()'>{{ product.category }}</div>
 
               <select ng-model='product.category' ng-show='checkIsAdmin()'>
-                    <option value='Paddle'>paddle</option>
+                    <option value='Paddle'>Paddle</option>
                     <option value='Ball'>Ball</option>
                     <option value='Case'>Case</option>
                     <option value='Table'>Table</option>
@@ -25,12 +26,14 @@
             </label> for 
 
             <label class="productPrice"> 
-              <input type='text' value='{{ product.price / 100 | currency}}' ng-readonly=!checkIsAdmin() ng-model='product.price'></label>
+              <div ng-hide='checkIsAdmin()'> {{ product.price | currency}}</div>
+              <input type='text' value='{{ product.price | currency}}' ng-show=checkIsAdmin() ng-model='product.price'></label>
           </p>
           <h4 class="userRating"> Users rated this product: {{ product.rating }} / 5.0 </h4>
           <h4 class="prodDescript1"> Product Description: </h4>
           <h4 class="prodDescript2"> 
-          <input type='text' value='{{ product.description }}' ng-readonly=!checkIsAdmin() ng-model='product.description'>  </h4>
+          <div ng-hide='checkIsAdmin()'>{{ product.description }}</div>
+          <input type='text' value='{{ product.description }}' ng-show=checkIsAdmin() ng-model='product.description'>  </h4>
         	<button type="button" class="btn btn-success productsBtn" ng-click="Cart.add(product.id, 1)">Add to Cart</button>		
           <button type="button" class="btn btn-warning productsBtn" ng-click="returnToStore()">Back to Store</button>
           <button type="submit" class="btn btn-warning productsBtn" ng-show='checkIsAdmin()'>Edit</button>

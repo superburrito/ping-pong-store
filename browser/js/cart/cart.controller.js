@@ -1,5 +1,4 @@
 app.controller('CartCtrl', function($scope, $stateParams, Cart, Product, $window, $state){
-
 	$scope.cartItems = [];
 	$scope.emptyCart = true;
 	var cartKeys = Object.keys(Cart.get());
@@ -44,6 +43,5 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product, $window
             chargeAmount: $scope.totalPrice
         });
     }
-
 });
 

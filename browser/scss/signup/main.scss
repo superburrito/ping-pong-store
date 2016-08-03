@@ -1,0 +1,26 @@
+#signUpForm {
+	width:60%;
+	margin: 0 auto;
+}
+
+#signUpForm input[type=text], #signUpForm input[type=password]{
+	width:130%;
+	padding: 8px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	border: 1px solid black;
+    border-radius: 8px;
+}
+
+#signup .bufferOauth {
+	color: black;
+	width: 20%;
+}
+
+#signup .orText {
+	margin-left:auto;
+	margin-right: auto;
+	font-weight: bold;
+	font-size: 20px;
+	align: center;
+}

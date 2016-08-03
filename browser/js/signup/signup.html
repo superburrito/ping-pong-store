@@ -1,15 +1,26 @@
+<section id="signup">
+  <div class="col-xs-10 col-xs-offset-1-main">
+  <form id="signUpForm" ng-model='newUser' class="signUpForm" ng-submit='sendSignUp()'>
+  <b>First Name:</b><br>
+                  <input type="text" ng-model="newUser.firstName"></br>
+                  <b>Last Name: </b><br>
+                  <input type="text" ng-model="newUser.lastName"><br>
+                  <b>Email: </b><br>
+                  <input type="text" ng-model="newUser.email"><br>
+                  <b>Password: </b><br>
+                  <input type="password" ng-model="newUser.password"><br>
+                  <b>Address: </b><br>
+                  <input type="text" ng-model="newUser.address"><br>
+                  <br>
+   				<input type="submit" value="Submit">
+  </form>
 
-<form ng-model='newUser' name ="signUpForm" ng-submit='sendSignUp()'>
-First Name:<br>
-                <input type="text" ng-model="newUser.firstName"></br>
-                Last Name: <br>
-                <input type="text" ng-model="newUser.lastName"><br>
-                Email: <br>
-                <input type="text" ng-model="newUser.email"><br>
-                Password: <br>
-                <input type="password" ng-model="newUser.password"><br>
-                Address: <br>
-                <input type="text" ng-model="newUser.address"><br>
-                <br>
- 				<input type="submit" value="Submit">
-</form>
+    <div class="or buffer">
+      <div class="back-line"><span class="orText"><br><b></b></span></div>
+    </div>
+    <div class="bufferOauth">
+      <p class="oauthLink"><oauth-button provider-name="Google"></oauth-button></p>
+    </div>
+  </div>
+  </div>
+</section>

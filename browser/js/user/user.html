@@ -1,18 +1,23 @@
-<section id="userPage">
-    <h1>All User</h1>
+<section id="usersPage">
+    <div class="row">
+        <div class="usersMain col-xs-10 col-xs-offset-1">
+            <h1>All Users:</h1>
+                <div class="user" ng-repeat="user in users" >
+                    First Name: {{ user.firstName }}
+                	<br>
+                	Last Name: {{ user.lastName }}
+                	<br>
+                	Email: {{ user.email }}
+                	<br>
+                	Address: {{ user.address }}
+                	<br>
+                    <button class="btn btn-primary" ng-click='update(user.id)' ng-show='!user.isAdmin'>Set To Admin</button>
+                    <button class="btn btn-danger" ng-click='update(user.id)' ng-show='user.isAdmin'>Set To Normal User</button>
+                    <button class="btn btn-warning" ng-click='removeUser(user.id)'>Remove User</button>
+                </div>
+        </div>
+        <div class="usersFooter col-xs-10 col-xs-offset-1">
+        </div>
 
-    <div ng-repeat="user in users" >
-        <h3>User</h3>
-    	First Name: {{ user.firstName }}
-    	<br>
-    	Last Name: {{ user.lastName }}
-    	<br>
-    	Email: {{ user.email }}
-    	<br>
-    	Address: {{ user.address }}
-    	<br>
-        <button ng-click='removeUser(user.id)'>Remove User</button>
     </div>
-
-    <br>
 </section>

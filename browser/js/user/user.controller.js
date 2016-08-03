@@ -11,4 +11,11 @@ app.controller('UserCtrl', function($scope,User,$window){
 			$window.location.reload();
 		})
 	}
+
+	$scope.update = function(id){
+		User.updateUser(id)
+		.then(function(){
+			$window.location.reload();
+		})
+	}
 })

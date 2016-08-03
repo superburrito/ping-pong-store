@@ -14,13 +14,24 @@ app.factory('Checkout', function ($state, $http) {
     }
 
     CheckoutFactory.confirm = function (params) {
-      $state.go('home');
-      console.log(params);
-      return $http.post('/api/charge/', params);
+      $http.get('/api/account')
+      .then(function(user){
+        if(user) return CheckoutFactory.sendEmail(user.email)
+      })
+      .then(function(){
+        $state.go('home');
+        //console.log(params);
+        return $http.post('/api/charge/', params);
+      })
     }
 
     CheckoutFactory.cancel = function() {
         $state.go('cart');
+    }
+
+
+    CheckoutFactory.sendEmail = function(email){
+      return $http.get('/api/orders/confirmation/'+email);
     }
 
     return CheckoutFactory;

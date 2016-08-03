@@ -17,6 +17,8 @@ module.exports = function (app, db) {
 
     var verifyCallback = function (accessToken, refreshToken, profile, done) {
 
+        console.log("verifying Google callback");
+
         User.findOne({
                 where: {
                     google_id: profile.id

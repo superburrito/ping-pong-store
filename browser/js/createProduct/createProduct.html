@@ -1,37 +1,51 @@
-<form name="selectCategory" ng-submit='setCategory()'>
-Category: <select ng-model='category' required>
-                    <option value='Paddle'>paddle</option>
-                    <option value='Ball'>Ball</option>
-                    <option value='Case'>Case</option>
-                    <option value='Table'>Table</option>
-                    <option value='Robot'>Robot</option>
-          </select>
-<button type="submit" ng-disabled="selectCategory.$invalid">Confirm</button>
-</form>
+<section id='createProduct'>
+    <div class="col-xs-10 col-xs-offset-1 main">
+        <h4><b>Create a Product</b></h4>
+        <br>
+        <form name="selectCategory" class='form' ng-submit='setCategory()'>
+        <h4>First, select a category:</h4>
+        <br>
+        <select ng-model='category'  class="form-control cat" required>
+            <option value='Paddle'>Paddle</option>
+            <option value='Ball'>Ball</option>
+            <option value='Case'>Case</option>
+            <option value='Table'>Table</option>
+            <option value='Robot'>Robot</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit" ng-disabled="selectCategory.$invalid" class='btn btn-primary'>Confirm</button>
+        </h2>
+        </form>
 
-<form name="createProduct" ng-show='categoryExist' class="form-horizontal" ng-model='newProduct' ng-submit="create()"> 
-		
-        <br>
-        Name: <input type='text' ng-model='newProduct.name' required>
-        <br>
-        Price: <input type='number' ng-model='newProduct.price' required>
-        <br>
-        Brand: <input type='text' ng-model='newProduct.brand'>
-        <br>
-        Picture: <input type='url' ng-model='newProduct.imageUrl' >
-        <br>
-        Inventory: <input type='number' ng-model='newProduct.inventory' required>
-        <br>
-        Description: <input type='text' ng-model='newProduct.description'>
-        <div ng-show='isBall()'>
-            Quality:<select ng-model='newProduct.quality'>
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                    </select>
-            <br>
-        </div>
-		<div>
-			<button type="submit" class="btn btn-success" ng-disabled="createProduct.$invalid">Create Product</button>
-		</div>
-</form>
+        <form name="createProduct" ng-show='categoryExist' class="form-horizontal form" ng-model='newProduct' ng-submit="create()"> 
+        		
+                <br>
+                <h4>Name: <input type='text' class="form-control" ng-model='newProduct.name' required></h4>
+                <br>
+                <h4>Price: <input type='number' class="form-control" ng-model='newProduct.price' required></h4>
+                <br>
+                <h4>Brand: <input type='text' class="form-control" ng-model='newProduct.brand'></h4>
+                <br>
+                <h4>Picture: <input type='url' class="form-control" ng-model='newProduct.imageUrl' ></h4>
+                <br>
+                <h4>Inventory: <input type='number' class="form-control" ng-model='newProduct.inventory' required></h4>
+                <br>
+                <h4>Description: <input type='text' class="form-control" ng-model='newProduct.description'></h4>
+                <div ng-show='isBall()'>
+                    <h4>Quality:<select ng-model='newProduct.quality'>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                            </select></h4>
+                    <br>
+                </div>
+                <br>
+        		<div>
+        			<button type="submit" class="btn btn-success" ng-disabled="createProduct.$invalid">Create Product</button>
+        		</div>
+        </form>
+    </div>
+    <div class="col-xs-10 col-xs-offset-1 btm">
+    </div>
+</section>

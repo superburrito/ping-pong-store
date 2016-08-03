@@ -1,4 +1,35 @@
-#login-form {
-  width: 60%;
-  margin: 0 auto;
+#login {
+  
+  .loginMain {
+    background-color: white;
+  }
+
+	.loginForm {
+    text-align: center;
+    margin: 0 auto;
+	}
+	.loginBtm {
+		height: 1000px;
+    background-color: white;
+	}
+  	.loginTop {
+  		height: 200px;
+  	}
+
+  	.form {
+  		border: 1px solid #ddd;
+  		margin: 0 auto;
+      float: none;
+    	height: 300px;
+    	width:400px;
+  	}
+
+  	input[type='text']{
+  		width:250px;
+  	}
+
+  	input[type='password']{
+  		width:250px;
+  	}
+
 }
