@@ -7,30 +7,21 @@ var router = require('express').Router();
 var Order = models.Order;
 var Orderproduct = models.Orderproduct;
 var Promise = require('bluebird');
-var stripe = require('stripe');
+var stripe = require('stripe')('sk_test_ENKlD4f9aXhlZgQ7K8nvXRCA');
 
-router.post('/charge', function(req, res, next){
+router.post('/', function(req, res, next){
     let chargePromise = User.findOne({
         where: {
-            id: req.user.id,
-            customerId: {
-                $ne: null
-            }
+            id: req.user.id
         }
     })
     .then(function(user){
-        if(!user) {
-            return stripe.card.createToken({
-                number: req.body.ccNumber,
-                cvc: req.body.cvc,
-                exp_month: req.body.expMonth,
-                exp_year: req.body.expYear
-            })
-            .then(function(token){
-                return stripe.customers.create({
-                    source: token,
-                    description: req.user.id || 'guest'
-                })
+        console.log('user', user);
+        if(!user) return null;
+        if(!user.customerId) {
+            return stripe.customers.create({
+                source: req.body.token.id,
+                description: req.user.id || 'guest'
             })
             .then(function(customer) {
                 return user.update({
@@ -38,10 +29,12 @@ router.post('/charge', function(req, res, next){
                 })
             })
             .then(function(updatedUser){
+                console.log("new customer id is:", user.customerId)
                 return updatedUser.customerId;
             })
         }
         else{
+            console.log("old customer id is:", user.customerId)
             return user.customerId;
         }
     })
@@ -93,23 +86,35 @@ router.post('/charge', function(req, res, next){
 
     return Promise.all([chargePromise, createOrderPromise])
     .spread(function(customerId, orderProducts){
-        return stripe.charges.create({
-            amount: req.body.chargeAmount,
-            currency: 'USD',
-            customer: customerId
-        },
-        function(err, charge) {
-            if (err) {
-                return next(err);
-            } else {
-                req.flash('message', {
-                    status: 'success',
-                    value: 'Thank you for shopping at King Pong! Your order will be placed shortly.'
-                });
-                return res.sendStatus(200);
-            }
-        })
-    });
+        if(!customerId) {
+            return stripe.charges.create({
+                amount: req.body.chargeAmount * 100,
+                currency: 'USD',
+                source: req.body.token.id
+            })
+        }
+        else{
+            return stripe.charges.create({
+                amount: req.body.chargeAmount * 100,
+                currency: 'USD',
+                customer: customerId,
+                //source: req.body.token.id
+            })
+        }
+    },
+    function(err, charge) {
+        if (err) {
+            return next(err);
+        } else {
+            let messageObj = {
+                status: 'success',
+                value: 'Thank you for shopping at King Pong! Your order will be placed shortly.'
+            };
+            console.log(messageObj.value);
+            return res.status(200);
+        }
+    })
+    .catch(next);
 })
 
 module.exports = router;

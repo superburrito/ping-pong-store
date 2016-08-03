@@ -20,21 +20,8 @@
   <form ng-submit="confirm()">
     <legend>Deliver To: </legend>
     <div class="form-group">
-        <input type="text" ng-value="defaultAddress" name="addressField" class="form-control" type="text" ng-model="typedAddress" ng-minlength="8" required>
+        <input type="text" ng-value="defaultAddress" name="addressField" class="form-control" type="text" ng-model="typedAddress">
     </div>
-    <legend>Payment Method: </legend>
-        <div class="form-group">
-          <label>Credit Card Info</label>
-          <input type="tel" class="form-control card-number cc-number" ng-model="ccNumber" data-stripe="number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required>
-        </div>
-        <div class="form-group">
-          <input type="tel" class="form-control cc-cvc card-cvc" data-stripe="cvc" autocomplete="off" placeholder="CVC" ng-model="cvc" required>
-        </div>
-        <div class="form-group">
-          <label>Card Expiration Date</label>
-          <input type="text" data-stripe="exp-month" placeholder="MM" class="card-expiry-month form-control" ng-model="expMonth" required>
-          <input type="text" data-stripe="exp-year" placeholder="YYYY" class="card-expiry-year form-control" ng-model="expYear" required>
-        </div>
     <div>
         <button type="submit" class="btn btn-success" ng-disabled="checkoutForm.$invalid">Confirm Purchase</button>
     </div>

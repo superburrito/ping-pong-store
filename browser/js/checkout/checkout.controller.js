@@ -2,10 +2,30 @@ app.controller('CheckoutCtrl', function($scope, $stateParams, Checkout, Cart, $s
 
     // Let checkoutaddress default to user's address
 
+    console.log('$stateParams:', $stateParams);
+
+    var handler = StripeCheckout.configure({
+      key: 'pk_test_vtvTJVblPL4JVm04aqLxzndr',
+      image: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQdRHcE2vqzA8YCMfhjJsnPpkPDyhVQyrjZIeHV8NHY6OnBzx711w7wIQ',
+      locale: 'auto',
+      token: function(token) {
+        $scope.token = token;
+      }
+    });
+
+    handler.open({
+      name: 'King Pong',
+      description: 'Where champions are made.',
+      amount: $scope.chargeAmount
+    });
+
+// handler.close();
+
     $scope.defaultAddress = '';
     Checkout.findAddress()
     .then(function(userAddress){
-        $scope.defaultAddress = userAddress
+        $scope.defaultAddress = userAddress;
+        $scope.typedAddress = $scope.defaultAddress;
     });
 
     console.log($stateParams.cartItems);
@@ -25,12 +45,9 @@ app.controller('CheckoutCtrl', function($scope, $stateParams, Checkout, Cart, $s
         $scope.cartItems = [];
         Cart.empty()
         return Checkout.confirm({
+            token: $scope.token,
             address: $scope.typedAddress,
-            cartIds: $scope.cartIds,
-            ccNumber: $scope.ccNumber,
-            cvc: $scope.cvc,
-            expMonth: $scope.expMonth,
-            expYear: $scope.expYear,
+            cartIds: cartIds,
             chargeAmount: $scope.chargeAmount
         });
     };

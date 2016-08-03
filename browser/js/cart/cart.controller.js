@@ -38,7 +38,7 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product, $window
 	}
 
     $scope.checkout = function() {
-        console.log("***************************", $scope.cartItems);
+        console.log("***************************", $scope.cartItems, $scope.totalPrice);
         $state.go('checkout', {
             cartItems: $scope.cartItems,
             chargeAmount: $scope.totalPrice
