@@ -11,9 +11,14 @@
 		height: 1000px;
 	}
 	
+	.form-control {
+		display: inline-block;
+		width: 300px;
+	}
+
 	.form {
-		width: 60%;
-  		margin: 0 auto;
+		width: 100%;
+  	margin: 0 auto;
 	}
 
 	button {
