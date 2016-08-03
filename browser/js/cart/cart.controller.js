@@ -3,7 +3,8 @@ app.controller('CartCtrl', function($scope, $stateParams, Cart, Product, $window
 	$scope.emptyCart = true;
 	var cartKeys = Object.keys(Cart.get());
 	var totalPrice = 0;
-	if(cartKeys.length > 0){
+	if(cartKeys.length > 1){
+		console.log(cartKeys);
 		$scope.emptyCart = false;
 		cartKeys.forEach(function(productId){
 			//console.log("Current ProductId on Cart is: ", productId);
