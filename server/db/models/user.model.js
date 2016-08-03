@@ -19,11 +19,11 @@ module.exports = db.define('user', {
     },
     password: {
         type: Sequelize.STRING,
-        allowNull: false
+        defaultValue: 'p@ssword'
     },
     address: {
         type: Sequelize.STRING,
-        allowNull: false
+        defaultValue: '5 Hanover Square'
     },
     customerId: {
         type: Sequelize.STRING
