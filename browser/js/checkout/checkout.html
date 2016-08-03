@@ -1,29 +1,37 @@
 <section id = "checkout">
+  <div class="col-xs-10 col-xs-offset-1 main">
 
-  <div class="row cartItem" ng-repeat="cartItem in cartItems">
+    <h3 class="checkoutLabel" ng-hide="emptyCart">Confirm Your Order:</h3>
+    <div class="row cartItem" ng-repeat="cartItem in cartItems">
 
-    <div class="col-xs-12 col-md-3 cartItemImg">
-      <img src="{{ cartItem.product.imageUrl }}">
+      <div class="col-xs-12 col-md-3 cartItemImg">
+        <img src="{{ cartItem.product.imageUrl }}">
+      </div>
+      <div class="col-xs-12 col-md-9 cartItemPanel">
+        <br>
+        Item: {{ cartItem.product.name }} {{ cartItem.product.category }}
+        <br>
+        Unit Price: ${{ cartItem.product.price }}
+        <br>
+        Quantity Ordered: {{ cartItem.quantity }}
+        <br>
+      </div>
+
     </div>
-    <div class="col-xs-12 col-md-9 cartItemPanel">
-      <br>
-      Item: {{ cartItem.product.name }} {{ cartItem.product.category }}
-      <br>
-      Unit Price: ${{ cartItem.product.price }}
-      <br>
-      Quantity Ordered: {{ cartItem.quantity }}
-      <br>
-    </div>
 
+    <br>
+    <h4> Net Total: ${{chargeAmount}} </h4>
+    <br>
+    <br>
+    <form ng-submit="confirm()">
+      <legend>Deliver To: </legend>
+      <div class="form-group">
+          <input type="text" ng-value="defaultAddress" name="addressField" class="form-control" type="text" ng-model="typedAddress">
+      </div>
+      <div>
+          <button type="submit" class="btn btn-success" ng-disabled="checkoutForm.$invalid">Confirm Purchase</button>
+      </div>
+      <br>
+    </form>
   </div>
-  <h4> Total: {{chargeAmount}} </h4>
-  <form ng-submit="confirm()">
-    <legend>Deliver To: </legend>
-    <div class="form-group">
-        <input type="text" ng-value="defaultAddress" name="addressField" class="form-control" type="text" ng-model="typedAddress">
-    </div>
-    <div>
-        <button type="submit" class="btn btn-success" ng-disabled="checkoutForm.$invalid">Confirm Purchase</button>
-    </div>
-  </form>
 </section>
