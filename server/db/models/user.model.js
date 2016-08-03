@@ -25,6 +25,9 @@ module.exports = db.define('user', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    customerId: {
+        type: Sequelize.STRING
+    },
     salt: {
         type: Sequelize.STRING
     },
