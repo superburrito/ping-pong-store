@@ -30,18 +30,7 @@
     <!-- Cart MetaData -->
     Total Amount Chargeable: ${{ totalPrice }}
     <br>
-    <form name="checkoutForm" ng-hide="emptyCart" class="form-horizontal" ng-submit="checkout()"> 
-
-      <fieldset class="addressForm">
-        <label>Deliver To:</label> 
-        <div class="form-group">
-          <input type="text" ng-value="defaultAddress" name="addressField" class="form-control" type="text" ng-model="typedAddress" ng-minlength="8" required>
-        </div>
-        <div>
-          <button type="submit" class="btn btn-success" ng-disabled="checkoutForm.$invalid">Confirm Purchase</button>
-        </div>
-      </fieldset>
-    </form>
+    <button type="submit" class="btn btn-success" ng-click="checkout()">Checkout</button>
   </div>
   <div class="col-xs-10 col-xs-offset-1 footer">
   </div>

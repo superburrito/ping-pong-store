@@ -24,7 +24,7 @@ router.get('/', function(req, res, next){
         .then(function(orders){
             return res.json(placeAllProduct(orders,arr));
         })
-        
+
     }
     else{
         return Order.findAll({
@@ -34,8 +34,13 @@ router.get('/', function(req, res, next){
             arr = orders;
             return findOrderProduct(orders);
         })
+<<<<<<< HEAD
+        .then(function(orders){
+            return res.json(placeAllProduct(orders));
+=======
         .then(function(orders){           
             return res.json(placeAllProduct(orders,arr));
+>>>>>>> master
         })
     }
 });
@@ -77,6 +82,8 @@ function placeAllProduct(orders,arr){
     return allOrders;
 }
 
+<<<<<<< HEAD
+=======
 router.get('/confirmation/:email', function(req,res,next){
     console.log('in router')
     var transporter = nodemailer.createTransport({
@@ -151,6 +158,7 @@ router.post('/checkout/:address', function(req,res,next){
     })
 })
 
+>>>>>>> master
 /*router.post('/', function(req, res, next){
     if(!req.user.isAdmin) res.sendStatus(403);
     return Order.create(req.body)
