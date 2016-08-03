@@ -1,12 +1,10 @@
 <section id='login'>
     <div class='background'>
-        <div class="col-xs-10 col-xs-offset-1 loginTop">
-        <br>
-            <h1 align='center'>Welcome to the Jungle!</h1>
-        </div>
+
         <div class="col-xs-10 col-xs-offset-1 loginMain" >
-            <div class='form'>
-                <form id="login-form" name="loginForm" ng-submit="loginForm.$valid && sendLogin(login)">
+            <br>
+            <div class='loginForm'>
+                <form class="form" name="loginForm" ng-submit="loginForm.$valid && sendLogin(login)">
 
                     <alert type="danger" ng-show="error">
                         {{ error }}
@@ -23,6 +21,7 @@
                     <button type="submit" class="btn btn-default btn-warning">Log In</button>
                 </form>
             </div>
+            <br>
         </div>
     <div class="col-xs-10 col-xs-offset-1 loginBtm">
     </div>

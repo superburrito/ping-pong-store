@@ -37,14 +37,6 @@ navbar {
     }
   }
 
-  .login-button {
-    float: right;
-    border: 1px solid black;
-    margin-top: 10px;
-    background: none;
-    outline: none !important;
-  }
-
   .welcome {
     float: right;
     margin-top: 12px;
@@ -57,6 +49,11 @@ navbar {
       color: #f30046;
       cursor: pointer;
     }
+  }
+
+  .login {
+    color: #f30046;
+    font-weight: bold;
   }
 
   .glyphicon {
