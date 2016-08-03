@@ -13,9 +13,15 @@ app.factory('Checkout', function ($state, $http) {
       })
     }
 
+    CheckoutFactory.sendEmail = function(email){
+      return $http.get('/api/orders/confirmation/'+email);
+    }
+
     CheckoutFactory.confirm = function (params) {
-      $http.get('/api/account')
+      return $http.get('/api/account')
+      .then(user => user.data)
       .then(function(user){
+        console.log('USER.EMAIL#########################', user)
         if(user) return CheckoutFactory.sendEmail(user.email)
       })
       .then(function(){
@@ -27,11 +33,6 @@ app.factory('Checkout', function ($state, $http) {
 
     CheckoutFactory.cancel = function() {
         $state.go('cart');
-    }
-
-
-    CheckoutFactory.sendEmail = function(email){
-      return $http.get('/api/orders/confirmation/'+email);
     }
 
     return CheckoutFactory;
