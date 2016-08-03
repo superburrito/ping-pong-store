@@ -1,8 +1,13 @@
 <section id="signup">
-  <div class="col-xs-10 col-xs-offset-1-main">
+  <div class="col-xs-10 col-xs-offset-1 signupTop">
+  </div>
+  <div class="col-xs-10 col-xs-offset-1 signupMain">
+  <br>
+  <h4><b>Fill in Your Details<b></h4>
+  <br>
   <form id="signUpForm" ng-model='newUser' class="signUpForm" ng-submit='sendSignUp()'>
   <b>First Name:</b><br>
-                  <input type="text" ng-model="newUser.firstName"></br>
+                  <input id='text' type="text" ng-model="newUser.firstName"></br>
                   <b>Last Name: </b><br>
                   <input type="text" ng-model="newUser.lastName"><br>
                   <b>Email: </b><br>
@@ -12,7 +17,7 @@
                   <b>Address: </b><br>
                   <input type="text" ng-model="newUser.address"><br>
                   <br>
-   				<input type="submit" value="Submit">
+   				<input type="submit" class="btn btn-success" value="Submit">
   </form>
 
     <div class="or buffer">
