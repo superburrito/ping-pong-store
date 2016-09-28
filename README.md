@@ -9,3 +9,6 @@ Amazon-inspired Ping Pong Store created by Will Laeri, John Henry, Paul Hsu and 
 * Once the process is complete, terminate it with `Ctrl-C`. 
 * Run `npm start`. 
 * The app will be running on `localhost:1337`.
+
+#### Demo
+Feel free to check out a demo [here](https://www.youtube.com/watch?v=2vr1qOhqzdw)
