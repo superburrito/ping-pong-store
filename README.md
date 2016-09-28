@@ -1,4 +1,5 @@
 # ping-pong-store
+KING PONG
 
 Amazon-inspired Ping Pong Store created by Will Laeri, John Henry, Paul Hsu and Yao Hui Chua.
 
