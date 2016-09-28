@@ -11,4 +11,4 @@ Amazon-inspired Ping Pong Store created by Will Laeri, John Henry, Paul Hsu and 
 * The app will be running on `localhost:1337`.
 
 #### Demo
-Feel free to check out a demo [here](https://www.youtube.com/watch?v=2vr1qOhqzdw).
+Feel free to check out a demo [here](https://www.youtube.com/watch?v=2vr1qOhqzdw)!
