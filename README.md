@@ -6,6 +6,6 @@ Amazon-inspired Ping Pong Store created by Will Laeri, John Henry, Paul Hsu and 
 
 #### Setup
 * On your terminal, please run `npm install` and then `gulp`. This concatenates/transpiles the JS/SCSS. 
-* Once the process is completed, terminal it with `Ctrl-C`. 
+* Once the process is complete, terminate it with `Ctrl-C`. 
 * Run `npm start`. 
 * The app will be running on `localhost:1337`.
