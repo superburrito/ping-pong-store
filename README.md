@@ -2,4 +2,6 @@
 
 Amazon-inspired Ping Pong Store created by Will Laeri, John Henry, Paul Hsu and Yao Hui Chua.
 
-Please run `npm install` and then `gulp` on your termina. On a separate terminal, run `npm start`. 
+`npm` is required. 
+
+Please run `npm install` and then `gulp` on your terminal. On a separate terminal, run `npm start`. 
